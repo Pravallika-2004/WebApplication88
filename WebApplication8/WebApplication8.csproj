@@ -292,6 +292,7 @@
     <Content Include="Views\Student\UndertakingFormbystuVA.cshtml" />
     <Content Include="Views\Student\HostelAllotmentRequestForm.cshtml" />
     <Content Include="Views\Student\HealthRecord.cshtml" />
+    <Content Include="Views\Student\HostelRulesRegulations2018.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
