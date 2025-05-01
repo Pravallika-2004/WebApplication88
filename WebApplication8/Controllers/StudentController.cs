@@ -593,7 +593,20 @@ namespace WebApplication8.Controllers
             return View();
         }
 
+        public ActionResult Antiragging()
+        {
+            return View();
+        }
 
+        public ActionResult sis()
+        {
+            return View();
+        }
+
+        public ActionResult WLD()
+        {
+            return View();
+        }
 
     }
 

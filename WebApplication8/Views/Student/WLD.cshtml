@@ -1,0 +1,283 @@
+﻿@model WebApplication8.Models.Healthhistoryform
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Letter - IBS Hyderabad</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #343a40;
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .table-responsive {
+            margin-top: 20px;
+        }
+
+        .list-group-item {
+            border: none;
+            padding: 10px 0;
+        }
+
+        .section-title {
+            margin-top: 30px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .hotel-info {
+            margin-top: 20px;
+        }
+        /* Flowchart Styles */
+        .flowchart {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .flow-box {
+            padding: 10px 20px;
+            margin: 10px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            display: inline-block;
+            background-color: #fff;
+        }
+
+        .flow-decision {
+            border-color: #228B22;
+            background-color: #90EE90;
+            padding: 10px 30px;
+            min-width: 100px;
+        }
+
+        .flow-process {
+            border-color: #FF4500;
+            background-color: #FFA07A;
+        }
+
+        .flow-arrow {
+            margin: 0 10px;
+            font-size: 24px;
+        }
+
+        .flow-vertical-arrow {
+            display: block;
+            text-align: center;
+        }
+
+        .flow-branches {
+            display: flex;
+            justify-content: space-between;
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Letter Header -->
+        <div class="letter-header">
+            <h1>ICFAI Business School Hyderabad</h1>
+            <h3>Welcome Letter</h3>
+            <p><strong>Sub: ICFAI Business School Hyderabad Welcomes MBA Batch 2023-25</strong></p>
+        </div>
+
+        <!-- Welcome Message -->
+        <p>Dear Student,</p>
+        <p>A warm welcome to ICFAI Business School Hyderabad.</p>
+        <p>Congratulations on securing admission to the Two-year Full-Time Residential Program in Master’s in Business Administration (MBA) Batch of 2023-25 at ICFAI Business School (IBS) – Hyderabad.</p>
+        <p>We are delighted to welcome and enroll you to our vibrant community of learners, and hopeful to see you transform into thought leaders. We believe that our world-class faculty, innovative curriculum, and state-of-the-art facilities will provide you with an unparalleled learning experience. We are committed to providing you an education that prepares you to meet the demands of the business world, and we are confident that you will find our program stimulating, rewarding, and fulfilling.</p>
+        <p>Our state-of-the-art facilities are equipped with cutting-edge technology, and our faculty is well-versed in utilizing digital tools to deliver content in innovative and engaging ways. However, we also understand the value of human interaction and strive to blend technology judiciously with human intervention wherever required. Our goal is to provide you with a learning experience that is both high-tech and high-touch, enabling you to develop the skills and competencies needed to succeed in today's dynamic business landscape.</p>
+        <p>As you settle in, we encourage you to take advantage of the numerous resources and opportunities available to you on campus. From networking events to career counseling services, we are here to support you at every step. We also expect you to make countless memories while you’re on campus. By counting the time in minutes, we encourage you to make the most of it. We expect you to eat healthy, stay peaceful, and think better.</p>
+        <p>Once again, welcome to ICFAI Business School, Hyderabad. We look forward to meeting you, and we wish you all the best as you embark on this exciting journey.</p>
+        <p><strong>Prof. K S Venugopal Rao</strong><br>Director, IBS Hyderabad</p>
+
+        <!-- MBA Class of 2025 -->
+        <h2 class="section-title">MBA CLASS OF 2025</h2>
+        <h3>REGISTRATION PROCESS</h3>
+        <p>Dear Student,</p>
+        <p>This is in continuation of the Enrollment Letter already received by you. The process of registration is as follows:</p>
+
+        <!-- Academic Registration -->
+        <h4>1. Academic Registration</h4>
+        <p>The Academic Registration is scheduled for <strong>15th May, 2023</strong> between <strong>10:00 AM to 5:00 PM</strong> in Lecture Theaters (LT) in the following order:</p>
+        <!-- Flowchart Section -->
+        <h4>Registration Process Flowchart</h4>
+        <div class="flowchart">
+            <div class="flow-box">Registration Process</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-box">Checking of Fee Payment Status at "Ady I help you" Counter / Main Gate</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-box flow-decision">Fees Fully Paid?</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-branches">
+                <div>
+                    <div class="flow-box flow-process">YES</div>
+                    <div class="flow-vertical-arrow">↓</div>
+                    <div class="flow-box flow-process">Proceed to Collect Hostel Room Keys from designated counters</div>
+                    <div class="flow-vertical-arrow">↓</div>
+                    <div class="flow-box flow-process">Proceed to Academic Registration (10 AM to 5 PM, 15th May 2023)</div>
+                    <div class="flow-vertical-arrow">↓</div>
+                    <div class="flow-box">Induction sessions from 16th to 30th May 2023</div>
+                </div>
+                <div>
+                    <div class="flow-box flow-process">NO</div>
+                    <div class="flow-vertical-arrow">↓</div>
+                    <div class="flow-box flow-process">Proceed to Accounts Counter for Clearance</div>
+                    <div class="flow-vertical-arrow">↓</div>
+                    <div class="flow-box flow-process">Proceed to Collect Hostel Room Keys from designated counters</div>
+                    <div class="flow-vertical-arrow">↓</div>
+                    <div class="flow-box flow-process">Proceed to Academic Registration (10 AM to 5 PM, 15th May 2023)</div>
+                    <div class="flow-vertical-arrow">↓</div>
+                    <div class="flow-box">Induction sessions from 16th to 30th May 2023</div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>LT</th>
+                        <th>Enrollment Number Range</th>
+                        <th>LT</th>
+                        <th>Enrollment Number Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LT-A</td>
+                        <td>23BSPHH01C0001 - 23BSPHH01C0165</td>
+                        <td>LT-F</td>
+                        <td>23BSPHH01C0826 - 23BSPHH01C0990</td>
+                    </tr>
+                    <tr>
+                        <td>LT-B</td>
+                        <td>23BSPHH01C0166 - 23BSPHH01C0330</td>
+                        <td>LT-G</td>
+                        <td>23BSPHH01C0991 - 23BSPHH01C1155</td>
+                    </tr>
+                    <tr>
+                        <td>LT-C</td>
+                        <td>23BSPHH01C0331 - 23BSPHH01C0495</td>
+                        <td>LT-H</td>
+                        <td>23BSPHH01C1156 - 23BSPHH01C1320</td>
+                    </tr>
+                    <tr>
+                        <td>LT-D</td>
+                        <td>23BSPHH01C0496 - 23BSPHH01C0660</td>
+                        <td>LT-I</td>
+                        <td>23BSPHH01C1321 - 23BSPHH01C1485</td>
+                    </tr>
+                    <tr>
+                        <td>LT-E</td>
+                        <td>23BSPHH01C0661 - 23BSPHH01C0825</td>
+                        <td>LT-J</td>
+                        <td>23BSPHH01C1486 - 23BSPHH01C1688</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Physical presence of the student is mandatory for the registration process.</strong></p>
+        <p><strong>Academic Registration consists of:</strong></p>
+        <ul class="list-group">
+            <li class="list-group-item">Verification of Academic credentials</li>
+            <li class="list-group-item">Biometrics / Thumb Impression of the student</li>
+        </ul>
+        <p>Students are also required to carry the Original Certificates for verification. The same will be returned upon verification immediately (Please ensure to collect your original documents immediately after verification of your credentials).</p>
+        <p><strong>Students are required TO UPLOAD the following documents on the Student Information System (SIS) portal:</strong></p>
+        <ul class="list-group">
+            <li class="list-group-item">Copy of the Enrollment Letter</li>
+            <li class="list-group-item">Recent Passport Size Photograph (2 Nos.) in formals preferably</li>
+            <li class="list-group-item">Copy of X Certificate</li>
+            <li class="list-group-item">Copy of XII Certificate</li>
+            <li class="list-group-item">Copy of UG/Degree semester-wise mark sheets/consolidated mark sheets with CGPA to percentage calculation sheet – Annexure II along with CGPA to Percentage Calculation sheet as the University Guidelines</li>
+            <li class="list-group-item">Copy of Transfer Certificate</li>
+            <li class="list-group-item">Duly filled Graduation Percentage Calculation Sheet (students whose results are still awaited, may mention “RA (Results Awaited)” in the respective year-wise column)</li>
+            <li class="list-group-item">Email Acknowledgement copy of Anti-ragging Form / Proof of submitting Anti-ragging Form</li>
+            <li class="list-group-item">Anti-ragging acknowledgement receipt</li>
+        </ul>
+
+        <!-- Hostel and Mess Registration -->
+        <h4>2. Hostel and Mess Registration</h4>
+        <ul class="list-group">
+            <li class="list-group-item">Verification and submission of Hostel-related documents</li>
+            <li class="list-group-item">Allotment of Hostel room & issue of Mess Card</li>
+        </ul>
+        <p>Students who have paid the 1st semester program fees and hostel fees are allowed to register for hostel accommodation on <strong>14th May 2023</strong> from <strong>9:30 AM to 5 PM</strong>.</p>
+        <p><strong>Students are required TO UPLOAD the following documents on the Student Information System (SIS) portal:</strong></p>
+        <ul class="list-group">
+            <li class="list-group-item">Student Call Letter</li>
+            <li class="list-group-item">Hostel Allotment Form</li>
+            <li class="list-group-item">Health Record (Annex III)</li>
+            <li class="list-group-item">MBA Student Personal Data (Annex IV)</li>
+            <li class="list-group-item">Hostel Rules & Regulations (Annex V)</li>
+            <li class="list-group-item">Undertaking of The Parent/Guardian (Annex-V A)</li>
+            <li class="list-group-item">Undertaking by Parent/Guardian (Annex-V B)</li>
+            <li class="list-group-item">Undertaking by Parent (Annex-V C)</li>
+            <li class="list-group-item">Undertaking by Parent/Guardian (Annex-V D)</li>
+            <li class="list-group-item">Undertaking by Student (Annex-V F)</li>
+        </ul>
+
+        <!-- Induction Sessions -->
+        <h4>3. Induction Sessions</h4>
+        <p>The Induction session will be conducted from <strong>16th May to 30th May, 2023</strong>. A handbook will be provided on the day of the registration.</p>
+
+
+
+        <!-- General Instructions -->
+        <h3 class="section-title">General Instructions</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Parents will not be allowed to stay in the Campus. Parents are required to make necessary stay arrangements during their stay in Hyderabad.</li>
+            <li class="list-group-item">Parents will not be allowed entry into the hostel premises during the registration days.</li>
+            <li class="list-group-item">Parents who are willing to stay in a hotel nearby, may refer to the details of hotels below, which are within the range of 2-5km from the IBS Hyderabad Campus.</li>
+        </ul>
+        <div class="hotel-info">
+            <p>
+                <strong>1. S-Grand Inn</strong><br>
+                Survey no 196, Subishi’s Town Centre, 3rd Floor, Mokila, Shankarpally Mandal, RR Dist, Hyderabad – 501203<br>
+                Tel: 96529 05140 / 98481 21778 / 99517 09909 / 79894 00696<br>
+                Email: <a href="mailto:info@sgrandinn.com">info@sgrandinn.com</a><br>
+                Website: <a href="http://www.sgrandinn.com/contact.html">http://www.sgrandinn.com/contact.html</a>
+            </p>
+            <p>
+                <strong>2. Oyo Rooms D’Jade</strong><br>
+                Near Khanapur, Shankarpally Road (enroute the campus), 317 PYR Complex, Near ICFAI Campus, Miyakhan Gadda, Shankarpalli Rd., Hyderabad, Telangana-500075<br>
+                Tel: 0124 620 1614
+            </p>
+        </div>
+
+        <!-- Dress Code -->
+        <h3 class="section-title">Dress Code</h3>
+        <p>Dressing for Induction sessions, Regular Classes & Academic Premises: Students are advised to dress decently in the Academic Area/Premises. Boys are advised to wear Trousers with full/half Sleeves Shirts and Girls are advised to wear Trousers & Shirt or Indian Formals.</p>
+    </div>
+
+    <!-- Bootstrap JS (Optional for interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -229,6 +229,14 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\IMAGES\Logo[1].svg" />
+    <Content Include="Content\IMAGES\Picture1.png" />
+    <Content Include="Content\IMAGES\Picture2.png" />
+    <Content Include="Content\IMAGES\Picture3.png" />
+    <Content Include="Content\IMAGES\Picture4.png" />
+    <Content Include="Content\IMAGES\Picture5.png" />
+    <Content Include="Content\IMAGES\Picture6.png" />
+    <Content Include="Content\IMAGES\Picture7.jpg" />
+    <Content Include="Content\IMAGES\Picture8.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -293,6 +301,9 @@
     <Content Include="Views\Student\HostelAllotmentRequestForm.cshtml" />
     <Content Include="Views\Student\HealthRecord.cshtml" />
     <Content Include="Views\Student\HostelRulesRegulations2018.cshtml" />
+    <Content Include="Views\Student\Antiragging.cshtml" />
+    <Content Include="Views\Student\sis.cshtml" />
+    <Content Include="Views\Student\WLD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
