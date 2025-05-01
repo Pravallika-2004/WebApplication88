@@ -1,0 +1,264 @@
+﻿@model WebApplication8.Models.undertakingbystuV_F_
+@{
+    Layout = null;
+    ViewBag.Title = "Student Undertaking Form - University Admin Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e0f2ff 0%, #f4f7fb 100%);
+            margin: 40px;
+            padding: 20px;
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .form-container {
+            max-width: 1100px;
+            width: 100%;
+            background: linear-gradient(145deg, #ffffff, #f0f4ff);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 74, 173, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+            color: #004aad;
+            font-weight: 700;
+            font-size: 1.75rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #6b7280;
+            font-weight: 400;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        p {
+            margin: 12px 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        .statement {
+            margin-left: 20px;
+        }
+
+        .subpoint {
+            margin-left: 40px;
+        }
+
+        .blank-line {
+            border-bottom: 1px solid #000000;
+            height: 1.5rem;
+            display: inline-block;
+            vertical-align: bottom;
+            width: 250px;
+            margin: 0 0.5rem;
+            position: relative;
+        }
+
+        .blank-line-short {
+            border-bottom: 1px solid #000000;
+            height: 1.5rem;
+            display: inline-block;
+            vertical-align: bottom;
+            width: 100px;
+            margin: 0 0.5rem;
+            position: relative;
+        }
+
+        .prefilled-text {
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            font-size: 0.95rem;
+            color: #000000;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .signature-section, .verification {
+            margin-top: 30px;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: right;
+        }
+
+        .signature-section .declaration-line {
+            text-align: left;
+        }
+
+        .signature-section label, .verification label {
+            display: inline-block;
+            width: 180px;
+            font-weight: 500;
+            color: #1f2937;
+            margin-right: 10px;
+        }
+
+        .verification {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+
+        strong {
+            color: #004aad;
+            font-weight: 600;
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @@media (max-width: 640px) {
+            body {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+                border-radius: 0.75rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .blank-line, .blank-line-short {
+                width: 100% !important;
+                margin: 5px 0;
+            }
+
+            .prefilled-text {
+                font-size: 0.9rem;
+            }
+
+            .signature-section, .verification {
+                padding: 0.75rem;
+            }
+
+            .signature-section label, .verification label {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>UNDERTAKING BY STUDENT</h2>
+        <h3>Annexure V (f)</h3>
+
+        <p>
+            1.  I,
+            <span class="blank-line">
+                <span class="prefilled-text">@Model.StudentName @Model.EnrollmentNo</span>
+            </span>
+            (full name of student with roll no).
+            S/o, D/o, Mr./Mrs./Ms.
+            <span class="blank-line">
+                <span class="prefilled-text">@Model.ParentName</span>
+            </span>
+            having been admitted to IFHE, Hyderabad, have received a copy of the UGC Regulations on Curbing the Menace of Ragging in Higher Educational Institutions, 2009, (hereinafter called the "Regulations") carefully read and fully understood the provisions contained in the said regulations.
+        </p>
+
+        <p>2.  I have, in particular, perused clause 3 of the Regulations and am aware as to what constitutes ragging.</p>
+
+        <p>3.  I have also, in particular, perused clause 7 and clause 9.1 of the Regulations and am fully aware of the penal and administrative action that is liable to be taken against me in case I am found guilty of or abetting ragging, actively or passively, or being part of a conspiracy to promote ragging.</p>
+
+        <p>4.  I hereby solemnly aver and undertake that</p>
+        <p class="subpoint">a)  I will not indulge in any behavior or act that may be constituted as ragging under clause 3 of the Regulations.</p>
+        <p class="subpoint">b)  I will not participate in or abet or propagate through any act of commission or omission that may be constituted as ragging under clause 3 of the Regulations.</p>
+
+        <p>5.  I hereby affirm that, if found guilty of ragging, I am liable for punishment according to clause 9.1 of the Regulations, without prejudice to any other criminal action that may be taken against me under any penal law or any law for the time being in force.</p>
+
+        <p>6.  I hereby declare that I have not been expelled or debarred from admission in any institution in the country on account of being found guilty of, abetting or being part of a conspiracy to promote, ragging; and further affirm that, in case the declaration is found to be untrue, I am aware that my admission is liable to be cancelled.</p>
+
+        <p>7.  Along with the above mentioned points I do hereby declare that</p>
+        <p class="subpoint">a)  I will obey the code of conduct as laid down by the Student's Conduct and Discipline Rules 2016 and Hostel Rules and Regulations 2018 and do not indulge in any kind of indiscipline activity while in and off the University campus.</p>
+        <p class="subpoint">b)  I will be solely responsible for any kind of accident/mishap caused on account of the above mentioned clause 7(a).</p>
+
+        <div class="signature-section">
+            <p class="declaration-line">
+                Declared this <span class="blank-line-short"></span> day
+                <span class="blank-line-short">
+                    <span class="prefilled-text">@Model.VerificationDay th</span>
+                </span>
+                of month
+                <span class="blank-line-short">
+                    <span class="prefilled-text">@Model.VerificationMonth</span>
+                </span>
+                of year
+                <span class="blank-line-short">
+                    <span class="prefilled-text">@Model.VerificationYear</span>
+                </span>.
+            </p>
+            <p style="text-align: right;">Signature of Student</p>
+            <p>
+                <label>Name:</label><span class="blank-line">
+                    <span class="prefilled-text">@Model.StudentName</span>
+                </span>
+            </p>
+            <p>
+                <label>Address:</label><span class="blank-line">
+                    <span class="prefilled-text">@Model.StudentAddress</span>
+                </span>
+            </p>
+            <p>
+                <label>Telephone/Mobile No:</label><span class="blank-line">
+                    <span class="prefilled-text">@Model.StudentContact</span>
+                </span>
+            </p>
+        </div>
+
+        <div class="verification">
+            <h3>VERIFICATION</h3>
+            <p>Verified that the contents of this undertaking are true to the best of my knowledge and no part of the undertaking is false and nothing has been concealed or misstated therein.</p>
+            <p>Verified at (place) <span class="blank-line"></span> on this <span class="blank-line-short"></span> (day) <span class="blank-line-short"></span> (month) <span class="blank-line-short"></span> (year).</p>
+            <p style="text-align: right;">Signature of Student</p>
+            <p><label>Name:</label><span class="blank-line"></span></p>
+        </div>
+    </div>
+</body>
+</html>

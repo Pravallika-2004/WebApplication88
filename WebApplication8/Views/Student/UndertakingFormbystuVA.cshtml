@@ -1,0 +1,241 @@
+﻿@model WebApplication8.Models.UndertakingbyparVA
+@{
+    Layout = null;
+    ViewBag.Title = "Student Undertaking Form - University Admin Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e0f2ff 0%, #f4f7fb 100%);
+            margin: 40px;
+            padding: 20px;
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .form-container {
+            max-width: 1100px;
+            width: 100%;
+            background: linear-gradient(145deg, #ffffff, #f0f4ff);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 74, 173, 0.1);
+        }
+
+        .annexure {
+            text-align: right;
+            font-size: 14px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+            color: #004aad;
+            font-weight: 700;
+            font-size: 1.75rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        p {
+            margin: 12px 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        .indent {
+            text-indent: 40px;
+        }
+
+        .blank-line {
+            border-bottom: 1px solid #000000;
+            height: 1.5rem;
+            display: inline-block;
+            vertical-align: bottom;
+            width: 250px;
+            margin: 0 0.5rem;
+            position: relative;
+        }
+
+        .blank-line-short {
+            border-bottom: 1px solid #000000;
+            height: 1.5rem;
+            display: inline-block;
+            vertical-align: bottom;
+            width: 100px;
+            margin: 0 0.5rem;
+            position: relative;
+        }
+
+        .blank-line-long {
+            border-bottom: 1px solid #000000;
+            height: 1.5rem;
+            display: inline-block;
+            vertical-align: bottom;
+            width: 400px;
+            margin: 0 0.5rem;
+            position: relative;
+        }
+
+        .multiline {
+            border-bottom: 1px solid #000000;
+            width: 100%;
+            height: 1.2em;
+            display: inline-block;
+            margin: 4px 0;
+            position: relative;
+        }
+
+        .prefilled-text {
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            font-size: 0.95rem;
+            color: #000000;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .parent-indicator {
+            color: #004aad;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .signature-section {
+            margin-top: 50px;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: right;
+        }
+
+        .signature-section label {
+            display: inline-block;
+            width: 180px;
+            font-weight: 500;
+            color: #1f2937;
+            margin-right: 10px;
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @@media (max-width: 640px) {
+            body {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+                border-radius: 0.75rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .blank-line, .blank-line-short, .blank-line-long, .multiline {
+                width: 100% !important;
+                margin: 5px 0;
+            }
+
+            .prefilled-text {
+                font-size: 0.9rem;
+            }
+
+            .signature-section {
+                padding: 0.75rem;
+            }
+
+            .signature-section label {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="annexure">Annexure-V (A)</div>
+        <h2>UNDERTAKING OF THE PARENT / GUARDIAN</h2>
+
+        <p class="indent">
+            I, Mr./Mrs. <span class="blank-line-long">
+                <span class="prefilled-text">@Model.ParentName</span>
+            </span>, aged <span class="blank-line-short">
+                <span class="prefilled-text">@Model.ParentAge</span>
+            </span> years, address <br>
+            <span class="multiline">
+                <span class="prefilled-text">@Model.ParentAddressLine1</span>
+            </span><br>
+            <span class="multiline">
+                <span class="prefilled-text">@Model.ParentAddressLine2</span>
+            </span><br>
+            <span class="parent-indicator">✓ Parent</span> parent/guardian of <span class="blank-line-long">
+                <span class="prefilled-text">@Model.StudentName (@Model.EnrollmentNo)</span>
+            </span> (Full name of the student with Admission/Enrollment Number) studying <span class="blank-line-long">
+                <span class="prefilled-text">@Model.StudentProgram</span>
+            </span> program in IFHE, Hyderabad and staying in Hostel, hereby authorize the University to allow my ward to leave IFHE Campus with proper and prior intimation / permission of the authorities while studying at the University.
+        </p>
+
+        <p class="indent">
+            I undertake full responsibility for all his / her actions whilst he/she goes out of the Hostel/University campus.
+        </p>
+
+        <p class="indent">
+            Further, I/We authorize, Mr./Mrs. <span class="blank-line-long">
+                <span class="prefilled-text">@Model.LocalGuardianName</span>
+            </span>, aged <span class="blank-line-short">
+                <span class="prefilled-text">@Model.LocalGuardianAge</span>
+            </span> years, Address <br>
+            <span class="multiline">
+                <span class="prefilled-text">@Model.LocalGuardianAddressLine1</span>
+            </span><br>
+            <span class="multiline">
+                <span class="prefilled-text">@Model.LocalGuardianAddressLine2</span>
+            </span><br>
+            as the LOCAL GUARDIAN of my ward. My ward may avail leave and go to the above mentioned LOCAL GUARDIAN’S place as per the approved leave regulations of the University.
+        </p>
+
+        <div class="signature-section">
+            <p>Signature of the Parent/Guardian</p>
+            <p><label>Date:</label><span class="blank-line"></span></p>
+            <p><label>Place:</label><span class="blank-line"></span></p>
+        </div>
+    </div>
+</body>
+</html>

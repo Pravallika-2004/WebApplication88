@@ -1,0 +1,129 @@
+﻿@model WebApplication8.Models.PersonalDetailsTbl
+
+@{
+    ViewBag.Title = "Personal Details Form";
+}
+
+<h2>Personal Details Form</h2>
+
+@using (Html.BeginForm("PersonalDetailsForm", "Student", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.LabelFor(m => m.StudentName)
+        @Html.TextBoxFor(m => m.StudentName, new { @class = "form-control", placeholder = "Enter your name" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.DateOfBirth)
+        @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.EnrollmentNo)
+        @Html.TextBoxFor(m => m.EnrollmentNo, new { @class = "form-control" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.StudentContactNo)
+        @Html.TextBoxFor(m => m.StudentContactNo, new { @class = "form-control", placeholder = "Enter your contact number" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.StudentEmail)
+        @Html.TextBoxFor(m => m.StudentEmail, new { @class = "form-control", placeholder = "Enter your email" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.BloodGroup)
+        @Html.TextBoxFor(m => m.BloodGroup, new { @class = "form-control", placeholder = "Enter your blood group" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Nationality)
+        @Html.TextBoxFor(m => m.Nationality, new { @class = "form-control", placeholder = "Enter your nationality" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Religion)
+        @Html.TextBoxFor(m => m.Religion, new { @class = "form-control", placeholder = "Enter your religion" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.FathersName)
+        @Html.TextBoxFor(m => m.FathersName, new { @class = "form-control", placeholder = "Enter father's name" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Father_Mobile_No)
+        @Html.TextBoxFor(m => m.Father_Mobile_No, new { @class = "form-control", placeholder = "Enter father's mobile number" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.FathersEmail)
+        @Html.TextBoxFor(m => m.FathersEmail, new { @class = "form-control", placeholder = "Enter father's email" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.MothersName)
+        @Html.TextBoxFor(m => m.MothersName, new { @class = "form-control", placeholder = "Enter mother's name" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Mother_Mobile_No)
+        @Html.TextBoxFor(m => m.Mother_Mobile_No, new { @class = "form-control", placeholder = "Enter mother's mobile number" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.MothersEmail)
+        @Html.TextBoxFor(m => m.MothersEmail, new { @class = "form-control", placeholder = "Enter mother's email" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.StudentAddress_Communication)
+        @Html.TextAreaFor(m => m.StudentAddress_Communication, new { @class = "form-control", placeholder = "Enter your address" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.LocalGuardianName)
+        @Html.TextBoxFor(m => m.LocalGuardianName, new { @class = "form-control", placeholder = "Enter local guardian name" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.LocalGuardianResidentialAddress)
+        @Html.TextBoxFor(m => m.LocalGuardianResidentialAddress, new { @class = "form-control", placeholder = "Enter local guardian address" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.LocalGuardianContactNo)
+        @Html.TextBoxFor(m => m.LocalGuardianContactNo, new { @class = "form-control", placeholder = "Enter local guardian contact no" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.LocalGuardianEmail)
+        @Html.TextBoxFor(m => m.LocalGuardianEmail, new { @class = "form-control", placeholder = "Enter local guardian email" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.LocalGuardianRelationWithStudent)
+        @Html.TextBoxFor(m => m.LocalGuardianRelationWithStudent, new { @class = "form-control", placeholder = "Relation with student" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.LocalGuardianOccupation)
+        @Html.TextBoxFor(m => m.LocalGuardianOccupation, new { @class = "form-control", placeholder = "Guardian occupation" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Parents_Income_Category)
+        @Html.TextBoxFor(m => m.Parents_Income_Category, new { @class = "form-control", placeholder = "Enter parent's income category" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Work_Experience)
+        @Html.TextBoxFor(m => m.Work_Experience, new { @class = "form-control", placeholder = "Enter work experience if any" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+}

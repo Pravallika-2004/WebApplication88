@@ -1,0 +1,570 @@
+﻿@model WebApplication8.Models.PersonalDetailsTbl
+
+@{
+    ViewBag.Title = "Personal Details";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        h2 {
+            color: #dc3545;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h3.card-title {
+            color: #dc3545;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 10px rgba(220, 53, 69, 0.2);
+            outline: none;
+        }
+
+        .form-control[readonly] {
+            background: #e9ecef;
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .checkbox-group {
+            margin-bottom: 10px; /* Reduced margin */
+            padding: 8px; /* Reduced padding */
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .checkbox-group label {
+            margin-left: 10px;
+            font-size: 0.85rem;
+            color: #333;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            accent-color: #dc3545;
+        }
+
+        .health-history-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px; /* Reduced margin */
+        }
+
+        .health-history-item input {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .btn-primary, .btn-success, .btn-secondary, .btn-danger {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #0056b3, #007bff);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(90deg, #dc3545, #c82333);
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(90deg, #c82333, #dc3545);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(90deg, #6c757d, #5a6268);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(90deg, #5a6268, #6c757d);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(90deg, #dc3545, #c82333);
+        }
+
+        .btn-danger:hover {
+            background: linear-gradient(90deg, #c82333, #dc3545);
+            transform: translateY(-2px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            animation: slideIn 0.5s ease;
+        }
+
+        /* New class for tighter spacing in specific sections */
+        .form-group-compact {
+            margin-bottom: 12px; /* Reduced margin for compact spacing */
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .col-md-4 {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        @@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @@keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @@media (max-width: 768px) {
+            .col-md-4 {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Personal Details</h2>
+
+        @using (Html.BeginForm("SubmitPersonalDetails", "Student", FormMethod.Post, new { @class = "personal-details-form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- Student Details Card -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Student Details</h3>
+                    <div class="row">
+                        <!-- Column 1 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.EnrollmentNo, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.EnrollmentNo, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StudentName, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StudentName, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Gender, new { @class = "form-label" })
+                                @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "Male", "Female", "Other" }, Model.Gender), "Select Gender", new { @class = "form-select", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StudentEmail, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StudentEmail, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StudentContactNo, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StudentContactNo, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.DateOfBirth, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", @readonly = "readonly", Value = Model.DateOfBirth.HasValue ? Model.DateOfBirth.Value.ToString("yyyy-MM-dd") : "" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.AdmitCardNo, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.AdmitCardNo, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.AdmissionNo, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.AdmissionNo, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Nationality, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Nationality, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <!-- Column 2 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.RegistrationNo, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.RegistrationNo, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.AdmissionYear, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.AdmissionYear, new { @class = "form-control", type = "number" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Program, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Program, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Branch, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Branch, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Year, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Year, new { @class = "form-control", type = "number" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.RoomNo, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.RoomNo, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Age, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Age, new { @class = "form-control", type = "number" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Height, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Height, new { @class = "form-control", type = "number", step = "0.01" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Weight, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Weight, new { @class = "form-control", type = "number", step = "0.01" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Religion, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Religion, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <!-- Column 3 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.BloodGroup, new { @class = "form-label" })
+                                @Html.DropDownListFor(m => m.BloodGroup, new SelectList(new[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" }, Model.BloodGroup), "Select Blood Group", new { @class = "form-select" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.PresentResidentialAddress, new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.PresentResidentialAddress, new { @class = "form-control", rows = "4" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StudentAddress_Communication, new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.StudentAddress_Communication, new { @class = "form-control", rows = "4" })
+                            </div>
+                            <!-- Health Details -->
+                            <div class="form-group">
+                                <label class="form-label">Past Health History</label>
+                                <div id="healthHistoryContainer" class="mb-2">
+                                    @if (!string.IsNullOrEmpty(Model.Past_Health_History))
+                                    {
+                                        var conditions = Model.Past_Health_History.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                                        foreach (var condition in conditions)
+                                        {
+                                            <div class="health-history-item">
+                                                <input type="text" name="Past_Health_History[]" class="form-control" value="@condition" />
+                                                <button type="button" class="btn btn-danger btn-sm remove-health">Remove</button>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <button type="button" id="addHealthHistory" class="btn btn-primary btn-sm mt-1 mb-2">Add New</button>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Details_Of_Past_Health_History, new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.Details_Of_Past_Health_History, new { @class = "form-control", rows = "3" })
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Allergy Names</label>
+                                <div class="checkbox-group">
+                                    @foreach (var allergy in new[] { "substance allergy", "drug allergy" })
+                                    {
+                                        <div>
+                                            <input type="checkbox" name="AllergyNames" value="@allergy" @(Model.AllergyNames != null && Model.AllergyNames.Contains(allergy) ? "checked" : "") />
+                                            <label>@allergy</label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.History_Of_Substance_Allergy, new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.History_Of_Substance_Allergy, new { @class = "form-control", rows = "3" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.History_of_drug_allergy, new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.History_of_drug_allergy, new { @class = "form-control", rows = "3" })
+                            </div>
+                            <!-- Compact spacing for the following fields -->
+                            <div class="form-group-compact">
+                                <label class="form-label">Work Experience</label>
+                                <div class="checkbox-group">
+                                    @foreach (var experience in new[] { "1 year", "2 years", "3 years", "5 years" })
+                                    {
+                                        <div>
+                                            <input type="checkbox" name="Work_Experience" value="@experience" @(Model.Work_Experience != null && Model.Work_Experience.Contains(experience) ? "checked" : "") />
+                                            <label>@experience</label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group-compact">
+                                @Html.LabelFor(m => m.Caste, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Caste, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group-compact">
+                                @Html.LabelFor(m => m.AadharNumber, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.AadharNumber, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group-compact">
+                                @Html.LabelFor(m => m.stu_whatsappnum, new { @class = "form-label", @title = "Student WhatsApp Number" })
+                                @Html.TextBoxFor(m => m.stu_whatsappnum, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group-compact">
+                                @Html.LabelFor(m => m.Batch, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Batch, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group-compact">
+                                @Html.LabelFor(m => m.University, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.University, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parent Details Card -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Parent Details</h3>
+                    <div class="row">
+                        <!-- Column 1 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.FathersName, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.FathersName, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.MothersName, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.MothersName, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Father_Age, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Father_Age, new { @class = "form-control", type = "number" })
+                            </div>
+                        </div>
+                        <!-- Column 2 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Mother_Age, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Mother_Age, new { @class = "form-control", type = "number" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Father_Mobile_No, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Father_Mobile_No, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Mother_Mobile_No, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Mother_Mobile_No, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <!-- Column 3 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.FathersEmail, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.FathersEmail, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.MothersEmail, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.MothersEmail, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Parents Income Category</label>
+                                <div class="checkbox-group">
+                                    @foreach (var income in new[] { "Below 5 Lacs", "Below 8 Lacs", "Below 10 Lacs", "Above 10 Lacs" })
+                                    {
+                                        <div>
+                                            <input type="checkbox" name="Parents_Income_Category" value="@income" @(Model.Parents_Income_Category != null && Model.Parents_Income_Category.Contains(income) ? "checked" : "") />
+                                            <label>@income</label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Local Guardian Details Card -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Local Guardian Details</h3>
+                    <div class="row">
+                        <!-- Column 1 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianName, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.LocalGuardianName, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianResidentialAddress, new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.LocalGuardianResidentialAddress, new { @class = "form-control", rows = "4" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianContactNo, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.LocalGuardianContactNo, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <!-- Column 2 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianEmail, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.LocalGuardianEmail, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianRelationWithStudent, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.LocalGuardianRelationWithStudent, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianOccupation, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.LocalGuardianOccupation, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <!-- Column 3 -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianAge, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.LocalGuardianAge, new { @class = "form-control", type = "number" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success">Save Personal Details</button>
+                <a href="@Url.Action("Index", "Student")" class="btn btn-secondary ms-2">Back to Dashboard</a>
+            </div>
+        }
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add new health history input
+        document.getElementById('addHealthHistory').addEventListener('click', function () {
+            const container = document.getElementById('healthHistoryContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'health-history-item';
+            newItem.innerHTML = `
+                <input type="text" name="Past_Health_History[]" class="form-control" />
+                <button type="button" class="btn btn-danger btn-sm remove-health">Remove</button>
+            `;
+            container.appendChild(newItem);
+        });
+
+        // Remove health history input
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-health')) {
+                e.target.parentElement.remove();
+            }
+        });
+
+        // Handle checkbox groups
+        document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(group => {
+            group.addEventListener('change', function () {
+                const name = this.name;
+                const checkboxes = document.querySelectorAll(`input[name="${name}"]`);
+                let selectedValues = [];
+
+                checkboxes.forEach(cb => {
+                    if (cb.checked) {
+                        selectedValues.push(cb.value);
+                    }
+                });
+
+                // Update the value of the hidden input or form field that holds the selected checkboxes' values
+                // Here, we update the first checkbox input with the selected values joined by commas
+                const inputField = document.querySelector(`input[name="${name}"]`);
+
+                if (inputField) {
+                    inputField.setAttribute('value', selectedValues.join(','));
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,384 @@
+﻿@model WebApplication8.Models.Healthhistoryform
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Record - IBS ICFAI Business School</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa 0%, #f0f4ff 100%);
+            margin: 0;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .form-container {
+            max-width: 1200px;
+            width: 100%;
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 74, 173, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .form-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            flex: 1;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e40af;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        .annexure {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e40af;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e40af;
+            border-bottom: 2px solid #1e40af;
+            padding-bottom: 0.25rem;
+            margin: 2rem 0 1rem;
+            position: relative;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #9333ea;
+        }
+
+        .grid-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1f2937;
+            margin-right: 0.5rem;
+        }
+
+        .value {
+            font-size: 0.95rem;
+            color: #4b5563;
+            border-bottom: 2px dashed #000000;
+            display: inline-block;
+            width: 60%;
+            text-align: center;
+            min-height: 1.5rem;
+            vertical-align: middle;
+        }
+
+        .signature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .signature-value {
+            font-size: 0.95rem;
+            color: #4b5563;
+            border-bottom: 2px dashed #000000;
+            display: inline-block;
+            width: 80%;
+            text-align: center;
+            min-height: 1.5rem;
+            vertical-align: middle;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .checkbox-custom {
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #1e40af;
+            accent-color: #1e40af;
+            border-radius: 0.25rem;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .checkbox-custom:checked {
+            background-color: #1e40af;
+            border-color: #1e40af;
+        }
+
+        .checkbox-label {
+            font-size: 0.95rem;
+            color: #1f2937;
+        }
+
+        .history-list {
+            list-style: none;
+            padding-left: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .history-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .history-item {
+            font-size: 0.95rem;
+            color: #4b5563;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .history-item::before {
+            content: '...';
+            position: absolute;
+            left: 0;
+            color: #4b5563;
+        }
+
+        .details-text {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-top: 0.5rem;
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @@media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+                border-radius: 0.75rem;
+            }
+
+            .header h2 {
+                font-size: 1.25rem;
+            }
+
+            .header h3 {
+                font-size: 1.1rem;
+            }
+
+            .grid-form {
+                grid-template-columns: 1fr;
+            }
+
+            .signature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .history-row {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .full-width {
+                grid-column: span 1;
+            }
+
+            .value, .signature-value {
+                width: 50%;
+            }
+
+            .annexure {
+                font-size: 0.9rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .annexure {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header-container">
+            <div class="header">
+                <h2>IBS - ICFAI Business School</h2>
+                <h3>Health Record</h3>
+            </div>
+            <div class="annexure">Annexure-III</div>
+        </div>
+
+        <div class="grid-form">
+            <div>
+                <span class="label">Name:</span>
+                <span class="value">@Model.StudentName</span>
+            </div>
+            <div>
+                <span class="label">Enrollment No.:</span>
+                <span class="value">@Model.EnrollmentNo</span>
+            </div>
+            <div>
+                <span class="label">Room No:</span>
+                <span class="value">@Model.RoomNo</span>
+            </div>
+            <div>
+                <span class="label">Mobile No:</span>
+                <span class="value">@Model.StudentContactNo</span>
+            </div>
+            <div>
+                <span class="label">Age:</span>
+                <span class="value">@Model.Age</span>
+            </div>
+            <div>
+                <span class="label">Gender:</span>
+                <span class="checkbox-group">
+                    <input type="checkbox" class="checkbox-custom" @(Model.Gender == "Male" ? "checked" : "") disabled>
+                    <span class="checkbox-label">Male</span>
+                    <input type="checkbox" class="checkbox-custom" @(Model.Gender == "Female" ? "checked" : "") disabled>
+                    <span class="checkbox-label">Female</span>
+                </span>
+            </div>
+            <div>
+                <span class="label">Height:</span>
+                <span class="value">@Model.Height</span>
+            </div>
+            <div>
+                <span class="label">Weight:</span>
+                <span class="value">@Model.Weight</span>
+            </div>
+            <div>
+                <span class="label">Blood Group:</span>
+                <span class="value">@Model.BloodGroup</span>
+            </div>
+        </div>
+
+        <h4 class="title">Past History:</h4>
+        @if (!string.IsNullOrEmpty(Model.Past_Health_History))
+        {
+            var histories = Model.Past_Health_History.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(h => h.Trim()).ToList();
+            for (int i = 0; i < histories.Count; i += 4)
+            {
+                <div class="history-row">
+                    @for (int j = i; j < i + 4 && j < histories.Count; j++)
+                    {
+                        <span class="history-item">@histories[j]</span>
+                    }
+                </div>
+            }
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Details_Of_Past_Health_History))
+        {
+            <p><span class="label">Details:</span></p>
+            <p class="details-text">@Model.Details_Of_Past_Health_History</p>
+        }
+        else
+        {
+            <p><span class="label">Details:</span></p>
+            
+        }
+
+        <h4 class="title">History of Allergies:</h4>
+        @if (!string.IsNullOrEmpty(Model.History_Of_sub_Allergies))
+        {
+            <p><span class="label">Substance Allergy:</span></p>
+            <p class="details-text">@Model.History_Of_sub_Allergies</p>
+        }
+        else
+        {
+            <p><span class="label">Substance Allergy:</span></p>
+            
+        }
+
+        @if (!string.IsNullOrEmpty(Model.History_Of_drug_Allergies))
+        {
+            <p><span class="label">Drug Allergy:</span></p>
+            <p class="details-text">@Model.History_Of_drug_Allergies</p>
+        }
+        else
+        {
+            <p><span class="label">Drug Allergy:</span></p>
+            
+        }
+
+        <div class="signature-grid">
+            <div>
+                <span class="label">Date:</span>
+                <span>@DateTime.Now.ToString("dd/MM/yyyy")</span>
+            </div>
+            <div>
+                <span class="label">Signature:</span>
+                @*<span class="signature-value">________________________</span>*@
+            </div>
+        </div>
+    </div>
+</body>
+</html>

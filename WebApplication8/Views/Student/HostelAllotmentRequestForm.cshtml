@@ -1,0 +1,554 @@
+﻿@model WebApplication8.Models.Hostel_allot_form
+@{
+    Layout = null;
+    ViewBag.Title = "Student Undertaking Form - University Admin Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa 0%, #f0f4ff 100%);
+            margin: 0;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .document-wrapper {
+            margin-bottom: 3rem;
+            page-break-after: always;
+        }
+
+        .form-container {
+            max-width: 950px;
+            width: 100%;
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 74, 173, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e40af;
+            text-align: center;
+            border-bottom: 3px solid #1e40af;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #9333ea;
+        }
+
+        .input-field-custom {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.375rem;
+            background: #f9fafb;
+            font-size: 0.95rem;
+            color: #1f2937;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .input-field-custom:focus {
+            outline: none;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .input-field-custom::placeholder {
+            color: #9ca3af;
+        }
+
+        .multiline-custom {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.375rem;
+            background: #f9fafb;
+            font-size: 0.95rem;
+            color: #1f2937;
+            resize: vertical;
+            min-height: 4rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .multiline-custom:focus {
+            outline: none;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .photo-box {
+            width: 130px;
+            aspect-ratio: 1 / 1;
+            border: 2px solid #1e40af;
+            text-align: center;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            margin: 0 auto;
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-box:hover {
+            transform: scale(1.05);
+        }
+
+        .checkbox-custom {
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 2px solid #1e40af;
+            accent-color: #1e40af;
+            border-radius: 0.25rem;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .checkbox-custom:checked {
+            background-color: #1e40af;
+            border-color: #1e40af;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, #1e40af, #9333ea);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2rem auto 0;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(90deg, #1d3ba8, #7e22ce);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+        }
+
+        .statement {
+            font-size: 0.95rem;
+            color: #64748b;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 1.5rem;
+        }
+
+        .signature-line {
+            width: 40%;
+            border-bottom: 2px solid #64748b;
+            display: inline-block;
+            text-align: center;
+            margin: 0 5%;
+            vertical-align: middle;
+        }
+
+        .office-use {
+            font-style: italic;
+            color: #64748b;
+            text-align: center;
+            margin-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1rem;
+        }
+
+        .office-fields {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .blank-line {
+            border-bottom: 2px solid #000000;
+            height: 1.75rem;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+            margin: 0.5rem 0;
+            position: relative;
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+
+        .blank-line:focus {
+            outline: none;
+            border-bottom-color: #1e40af;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1.5rem;
+        }
+
+        .table-custom th {
+            background: #f1f5f9;
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 2px solid #1e40af;
+            color: #1e3a8a;
+        }
+
+        .table-custom td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #4b5563;
+        }
+
+        .table-custom tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-custom tr:hover td {
+            background: #f1f5f9;
+            transition: background 0.2s;
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @@media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+                border-radius: 0.75rem;
+            }
+
+            .header h2 {
+                font-size: 1.25rem;
+            }
+
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .input-field-custom, .multiline-custom {
+                width: 100% !important;
+                margin: 0.5rem 0;
+            }
+
+            .photo-box {
+                width: 100px;
+            }
+
+            .submit-btn {
+                width: 100%;
+                font-size: 0.95rem;
+            }
+
+            .signature-line {
+                width: 45%;
+                margin: 0 2.5%;
+            }
+
+            .office-fields {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .table-custom th, .table-custom td {
+                padding: 0.5rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hostel Allotment Request Form -->
+    <div class="document-wrapper">
+        <div class="form-container">
+            <div class="header">
+                <h2>The ICFAI Foundation for Higher Education</h2>
+                <p>Donthanapally, Shankerpally Road, Hyderabad - 501203</p>
+            </div>
+            <h3 class="title">Hostel Allotment Request Form</h3>
+            <form class="grid grid-cols-3 gap-6" method="post">
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Admit Card No.</label>
+                    <input type="text" class="input-field-custom" value="@Model.AdmitCardNo" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Enrolment No.</label>
+                    <input type="text" class="input-field-custom" value="@Model.EnrollmentNo" required />
+                </div>
+                <div class="col-span-1 photo-box">Latest Passport size colour photograph<br>(Paste - DO NOT STAPLE)</div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Student's Name</label>
+                    <input type="text" class="input-field-custom" value="@Model.StudentName" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Father's Name</label>
+                    <input type="text" class="input-field-custom" value="@Model.FatherName" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Mother's Name</label>
+                    <input type="text" class="input-field-custom" value="@Model.MotherName" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Admission Year</label>
+                    <input type="text" class="input-field-custom" pattern="\d{4}" placeholder="YYYY" value="@Model.AdmissionYear" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Blood Group</label>
+                    <input type="text" class="input-field-custom" placeholder="e.g., A+" value="@Model.BloodGroup" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">D.O.B.</label>
+                    <input type="date" class="input-field-custom" value="value=" @(Model.DateOfBirth.HasValue ? Model.DateOfBirth.Value.ToString("dd-MM-yyyy") : "") " readonly  />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Present Residential Address</label>
+                    <textarea class="multiline-custom" required>@Model.PresentResidentialAddress</textarea>
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Contact No (Resi/Mobile)</label>
+                    <input type="tel" class="input-field-custom" pattern="[0-9]{10}" placeholder="10-digit mobile" value="@Model.ContactNumber" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Email Address of Father</label>
+                    <input type="email" class="input-field-custom" value="@Model.FatherEmailAddress" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Email Address of Mother</label>
+                    <input type="email" class="input-field-custom" value="@Model.MotherEmailAddress" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Email Address Student</label>
+                    <input type="email" class="input-field-custom" value="@Model.StudentEmailAddress" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Name of Local Guardian</label>
+                    <input type="text" class="input-field-custom" value="@Model.LocalGuardianName" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Local Guardian's Residential Address (Hyderabad)</label>
+                    <textarea class="multiline-custom" required>@Model.LocalGuardianAddress</textarea>
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Contact No (Resi/Mobile)</label>
+                    <input type="tel" class="input-field-custom" pattern="[0-9]{10}" placeholder="10-digit mobile" value="@Model.LocalGuardianContactNumber" required />
+                </div>
+                <div class="col-span-1">
+                    <label class="block font-medium text-sm text-gray-700 mb-1">Email Address of Guardian</label>
+                    <input type="email" class="input-field-custom" value="@Model.LocalGuardianEmailAddress" required />
+                </div>
+                <p class="col-span-3 statement">WE HEREBY STATE THAT ALL THE ABOVE INFORMATION IS TRUE TO THE BEST OF OUR KNOWLEDGE</p>
+                <div class="col-span-3 flex justify-between mt-6">
+                    <span class="signature-line">SIGNATURE OF STUDENT</span>
+                    <span class="signature-line">SIGNATURE OF PARENT/GUARDIAN</span>
+                </div>
+                <div class="col-span-3 office-use">For Office Use Only</div>
+                <div class="col-span-3 office-fields">
+                    <div>
+                        <label class="block font-medium text-sm text-gray-700 mb-1">Room No:</label>
+                        <span class="blank-line"></span>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm text-gray-700 mb-1">Block</label>
+                        <span class="blank-line"></span>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm text-gray-700 mb-1">Key No.</label>
+                        <span class="blank-line"></span>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm text-gray-700 mb-1">Mess</label>
+                        <span class="blank-line"></span>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm text-gray-700 mb-1">Date of Allotment</label>
+                        <span class="blank-line"></span>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm text-gray-700 mb-1">Alloted by</label>
+                        <span class="blank-line"></span>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm text-gray-700 mb-1">(name)</label>
+                        <span class="blank-line"></span>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm text-gray-700 mb-1">(Signature)</label>
+                        <span class="blank-line"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Undertaking and Checklist -->
+    <div class="document-wrapper">
+        <div class="form-container">
+            <div class="header">
+                <h3 class="title">Undertaking (To Be Signed By The Student)</h3>
+            </div>
+            <form asp-action="SubmitUndertakingChecklist" method="post">
+                <ol class="list-decimal pl-6 mb-6 text-sm text-gray-700 space-y-3">
+                    <li>I have read all the rules and regulations of the hostel and shall abide by them in letter and spirit. I shall also abide by the rules as modified or framed in future from time to time.</li>
+                    <li>I shall never indulge myself directly or indirectly in future in any type of Ragging activity.</li>
+                    <li>I shall not get involved in any Union/Group/Forum formation in Hostel/University to challenge the authority.</li>
+                    <li>I shall not involve in any confrontation/fight/quarrel/discipline activity in the hostel and the university.</li>
+                    <li>I shall pay the Accommodation charges, Mess bills and other charges as per the specified dates. If I fail to do so, I will abide by the rules and regulations about penalty.</li>
+                    <li>I shall follow all the directions given from time to time by the hostel authority during my stay in hostel.</li>
+                    <li>This undertaking abides me for my entire stay in Hostel.</li>
+                    <li>I understand that the decision of the Hostel administration in any of the above matter/issues will be binding on me and shall fully respect the same.</li>
+                    <li>I shall not bring or co-operate with others in bringing the banned substances as well as items like cigar, alcohol etc., inside the campus.</li>
+                </ol>
+                <div class="flex justify-between mb-6 flex-wrap gap-4">
+                    <div class="w-full sm:w-5/12">
+                        <p class="mb-2"><span class="font-medium text-sm text-gray-700">Date:</span> <input type="date" name="date" class="input-field-custom" required></p>
+                        <p class="mb-2"><span class="font-medium text-sm text-gray-700">Place:</span> <input type="text" name="place" class="input-field-custom" placeholder="City" required></p>
+                    </div>
+                    <div class="w-full sm:w-5/12">
+                        <p class="mb-2"><span class="font-medium text-sm text-gray-700">Name of the Student:</span> <input type="text" name="student_name" class="input-field-custom" value="@Model.StudentName" required></p>
+                        <p class="mb-2"><span class="font-medium text-sm text-gray-700">Student Mobile Number:</span> <input type="tel" name="student_mobile" class="input-field-custom" pattern="[0-9]{10}" placeholder="10-digit mobile" value="@Model.ContactNumber" required></p>
+                        <p class="mb-2"><span class="font-medium text-sm text-gray-700">Signature:</span> <input type="text" name="signature" class="input-field-custom" required></p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-md font-semibold text-blue-900 mb-4">Checklist for Hostel Room Allotment</h4>
+                    <div class="overflow-x-auto">
+                        <table class="table-custom">
+                            <thead>
+                                <tr class="bg-blue-50">
+                                    <th class="border border-gray-300 p-2 text-sm font-semibold text-gray-700">S No</th>
+                                    <th class="border border-gray-300 p-2 text-sm font-semibold text-gray-700">Particulars</th>
+                                    <th class="border border-gray-300 p-2 text-sm font-semibold text-gray-700 text-center">Tick</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">1</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">Duly filled in and signed hostel allotment request form</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_1" class="checkbox-custom"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">2</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">Annexure IV - IFHE Hostel Rules & Regulations 2018</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_2" class="checkbox-custom"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">3</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">Annexure IVA - Undertaking of the Parent</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_3" class="checkbox-custom"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">4</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">Annexure IVB - Undertaking by Parent/Guardian</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_4" class="checkbox-custom"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">5</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">Annexure IVC - Undertaking by Parent (For Hostel Residents only)</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_5" class="checkbox-custom"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">6</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">Annexure IVD - Undertaking by Student</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_6" class="checkbox-custom"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">7</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">1 passport size self attested photograph of Mother</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_7" class="checkbox-custom"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">8</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">1 passport size self attested photograph of Father</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_8" class="checkbox-custom"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">9</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">1 passport size self attested photograph of local guardian</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_9" class="checkbox-custom"></td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">10</td>
+                                    <td class="border border-gray-300 p-2 text-sm text-gray-700">1 copy of photo ID of local guardian attested by Parent</td>
+                                    <td class="border border-gray-300 p-2 text-center"><input type="checkbox" name="checklist_10" class="checkbox-custom"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Submit Undertaking</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1038 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FEEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BridgLoanTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="University" Type="varchar" MaxLength="50" />
+          <Property Name="FeeParticular" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="varchar" MaxLength="50" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Semester" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramName" Type="varchar" MaxLength="150" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hostel_Allocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hostel_ID" Type="int" />
+          <Property Name="floor" Type="varchar" MaxLength="20" />
+          <Property Name="Room_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Room_Number" Type="varchar" MaxLength="10" />
+          <Property Name="Enrollment_ID" Type="varchar" MaxLength="18" />
+          <Property Name="Bed_Number" Type="int" />
+          <Property Name="Allocation_Date" Type="date" />
+          <Property Name="Allocated_By" Type="varchar" MaxLength="50" />
+          <Property Name="Allocation_Start" Type="date" />
+          <Property Name="Allocation_End" Type="date" />
+          <Property Name="Allocation_Status" Type="bit" />
+          <Property Name="Prev_Room" Type="varchar" MaxLength="10" />
+          <Property Name="Prev_Hostel" Type="int" />
+          <Property Name="EmailID" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="Hostel_Master">
+          <Key>
+            <PropertyRef Name="Hostel_ID" />
+          </Key>
+          <Property Name="Hostel_ID" Type="int" Nullable="false" />
+          <Property Name="Hostel_Name" Type="varchar" MaxLength="40" />
+          <Property Name="Gender" Type="varchar" MaxLength="15" />
+          <Property Name="Incharge_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Incharge_Email" Type="varchar" MaxLength="100" />
+          <Property Name="Incharge_Number" Type="varchar" MaxLength="15" />
+          <Property Name="Address" Type="varchar" MaxLength="150" />
+          <Property Name="City" Type="varchar" MaxLength="30" />
+          <Property Name="Pincode" Type="int" />
+          <Property Name="State" Type="varchar" MaxLength="20" />
+          <Property Name="Category" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="HostelFeesTbl">
+          <Key>
+            <PropertyRef Name="HostelFeeID" />
+          </Key>
+          <Property Name="HostelFeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="University" Type="varchar" MaxLength="100" />
+          <Property Name="HostelID" Type="int" />
+          <Property Name="RoomType" Type="varchar" MaxLength="50" />
+          <Property Name="RoomAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Year" Type="int" />
+          <Property Name="YearPeriod" Type="varchar" MaxLength="20" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="TotalRooms" Type="int" />
+          <Property Name="HostelName" Type="varchar" MaxLength="100" />
+          <Property Name="AvailableRooms" Type="int" />
+        </EntityType>
+        <EntityType Name="MessFeesTbl">
+          <Key>
+            <PropertyRef Name="MessFeeID" />
+          </Key>
+          <Property Name="MessFeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="University" Type="varchar" MaxLength="100" />
+          <Property Name="MessID" Type="int" />
+          <Property Name="MealPlan" Type="varchar" MaxLength="50" />
+          <Property Name="MessAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Year" Type="int" />
+          <Property Name="YearPeriod" Type="varchar" MaxLength="20" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="PenaltyDetailsTbl">
+          <Key>
+            <PropertyRef Name="PenaltyID" />
+          </Key>
+          <Property Name="PenaltyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="University" Type="varchar" MaxLength="100" />
+          <Property Name="ApplicationNo" Type="varchar" MaxLength="50" />
+          <Property Name="PenaltyType" Type="varchar" MaxLength="100" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="PaymentStatus" Type="varchar" MaxLength="50" />
+          <Property Name="EnrollmentNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PersonalDetailsTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdmitCardNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EnrollmentNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdmissionNo" Type="varchar" MaxLength="50" />
+          <Property Name="RegistrationNo" Type="varchar" MaxLength="50" />
+          <Property Name="StudentName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FathersName" Type="varchar" MaxLength="100" />
+          <Property Name="MothersName" Type="varchar" MaxLength="100" />
+          <Property Name="Father_Age" Type="int" />
+          <Property Name="Mother_Age" Type="int" />
+          <Property Name="LocalGuardianAge" Type="int" />
+          <Property Name="AdmissionYear" Type="int" />
+          <Property Name="Program" Type="varchar" MaxLength="100" />
+          <Property Name="Branch" Type="varchar" MaxLength="100" />
+          <Property Name="Year" Type="int" />
+          <Property Name="RoomNo" Type="varchar" MaxLength="20" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Height" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Weight" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="BloodGroup" Type="varchar" MaxLength="5" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="PresentResidentialAddress" Type="varchar" MaxLength="255" />
+          <Property Name="StudentAddress_Communication" Type="varchar" MaxLength="255" />
+          <Property Name="Nationality" Type="varchar" MaxLength="50" />
+          <Property Name="Religion" Type="varchar" MaxLength="50" />
+          <Property Name="Father_Mobile_No" Type="varchar" MaxLength="15" />
+          <Property Name="Mother_Mobile_No" Type="varchar" MaxLength="15" />
+          <Property Name="StudentContactNo" Type="varchar" MaxLength="20" />
+          <Property Name="FathersEmail" Type="varchar" MaxLength="100" />
+          <Property Name="MothersEmail" Type="varchar" MaxLength="100" />
+          <Property Name="StudentEmail" Type="varchar" MaxLength="100" />
+          <Property Name="LocalGuardianName" Type="varchar" MaxLength="100" />
+          <Property Name="LocalGuardianResidentialAddress" Type="varchar" MaxLength="255" />
+          <Property Name="LocalGuardianContactNo" Type="varchar" MaxLength="20" />
+          <Property Name="LocalGuardianEmail" Type="varchar" MaxLength="100" />
+          <Property Name="LocalGuardianRelationWithStudent" Type="varchar" MaxLength="50" />
+          <Property Name="LocalGuardianOccupation" Type="varchar" MaxLength="100" />
+          <Property Name="Parents_Income_Category" Type="varchar" MaxLength="20" />
+          <Property Name="Work_Experience" Type="varchar" MaxLength="10" />
+          <Property Name="Past_Health_History" Type="varchar" MaxLength="255" />
+          <Property Name="Details_Of_Past_Health_History" Type="text" />
+          <Property Name="AllergyNames" Type="varchar" MaxLength="100" />
+          <Property Name="History_Of_Substance_Allergy" Type="text" />
+          <Property Name="Caste" Type="varchar" MaxLength="40" />
+          <Property Name="AadharNumber" Type="varchar" MaxLength="15" />
+          <Property Name="stu_whatsappnum" Type="varchar" MaxLength="15" />
+          <Property Name="Batch" Type="varchar" MaxLength="40" />
+          <Property Name="University" Type="varchar" MaxLength="50" />
+          <Property Name="History_of_drug_allergy" Type="text" />
+        </EntityType>
+        <EntityType Name="ProgramTbl">
+          <Key>
+            <PropertyRef Name="ProgramID" />
+          </Key>
+          <Property Name="ProgramID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UniversityID" Type="int" />
+          <Property Name="ProgramName" Type="varchar" MaxLength="100" />
+          <Property Name="ProgramShortForm" Type="varchar" MaxLength="50" />
+          <Property Name="Batch" Type="varchar" MaxLength="50" />
+          <Property Name="SchoolDept" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ProgramStaff" Type="varchar" MaxLength="100" />
+          <Property Name="YearProgram" Type="int" />
+        </EntityType>
+        <EntityType Name="ReRegistrationDetailsTbl">
+          <Key>
+            <PropertyRef Name="ReRegID" />
+          </Key>
+          <Property Name="ReRegID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppNo" Type="varchar" MaxLength="50" />
+          <Property Name="EnrollmentNo" Type="varchar" MaxLength="50" />
+          <Property Name="UniversityID" Type="int" />
+          <Property Name="ProgramID" Type="int" />
+          <Property Name="Batch" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Subject" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SemesterFeesTbl">
+          <Key>
+            <PropertyRef Name="FeeID" />
+          </Key>
+          <Property Name="FeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="University" Type="varchar" MaxLength="100" />
+          <Property Name="ProgramID" Type="int" />
+          <Property Name="FeeParticular" Type="varchar" MaxLength="100" />
+          <Property Name="DueDate" Type="date" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Semester" Type="int" />
+          <Property Name="ProgramName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StudentProgramTbl">
+          <Key>
+            <PropertyRef Name="StudentProgramID" />
+          </Key>
+          <Property Name="StudentProgramID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="AppNo" Type="varchar" MaxLength="50" />
+          <Property Name="EnrollmentNo" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramID" Type="int" />
+          <Property Name="Batch" Type="varchar" MaxLength="50" />
+          <Property Name="University" Type="varchar" MaxLength="100" />
+          <Property Name="CurrentSemester" Type="int" />
+          <Property Name="ProgramName" Type="varchar" MaxLength="75" />
+        </EntityType>
+        <EntityType Name="StudentTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AppNo" Type="varchar" MaxLength="50" />
+          <Property Name="EnrollmentNo" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" />
+          <Property Name="WhatsAppNo" Type="varchar" MaxLength="15" />
+          <Property Name="FatherName" Type="varchar" MaxLength="100" />
+          <Property Name="MotherName" Type="varchar" MaxLength="100" />
+          <Property Name="FamilyIncome" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Caste" Type="varchar" MaxLength="50" />
+          <Property Name="AadhaarNo" Type="varchar" MaxLength="20" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Batch" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="University" Type="varchar" MaxLength="100" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="300" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="varchar" MaxLength="25" />
+          <Property Name="ProgramName" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="TblCashOnDeposit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="University" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DepositAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DepositDate" Type="datetime" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TblDues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="University" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="EnrollmentNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicationNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DuePurpose" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DueDate" Type="date" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="PaymentStatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TblFeeDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERID" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="EnrollmentNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProgramID" Type="int" />
+          <Property Name="ProgramName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FeeParticular" Type="nvarchar" MaxLength="100" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DueAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Paid" Type="bit" />
+          <Property Name="TransactionOrder" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransactionDate" Type="datetime" />
+          <Property Name="TransactionAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="100" />
+          <Property Name="TransactionStatus" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CurrentSemester" Type="int" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="HostelName" Type="varchar" MaxLength="100" />
+          <Property Name="RoomType" Type="varchar" MaxLength="50" />
+          <Property Name="NoOfPapers" Type="int" />
+        </EntityType>
+        <EntityType Name="TblLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="TransportTbl">
+          <Key>
+            <PropertyRef Name="TransportID" />
+          </Key>
+          <Property Name="TransportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UniversityID" Type="int" />
+          <Property Name="TransportRoute" Type="varchar" MaxLength="100" />
+          <Property Name="TransportAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Year" Type="int" />
+          <Property Name="YearPeriod" Type="varchar" MaxLength="20" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="UniversityName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="FEEModelStoreContainer">
+          <EntitySet Name="BridgLoanTbl" EntityType="Self.BridgLoanTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hostel_Allocation" EntityType="Self.Hostel_Allocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hostel_Master" EntityType="Self.Hostel_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HostelFeesTbl" EntityType="Self.HostelFeesTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessFeesTbl" EntityType="Self.MessFeesTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PenaltyDetailsTbl" EntityType="Self.PenaltyDetailsTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalDetailsTbl" EntityType="Self.PersonalDetailsTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramTbl" EntityType="Self.ProgramTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReRegistrationDetailsTbl" EntityType="Self.ReRegistrationDetailsTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SemesterFeesTbl" EntityType="Self.SemesterFeesTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentProgramTbl" EntityType="Self.StudentProgramTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentTbl" EntityType="Self.StudentTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCashOnDeposit" EntityType="Self.TblCashOnDeposit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblDues" EntityType="Self.TblDues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblFeeDetails" EntityType="Self.TblFeeDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblLogin" EntityType="Self.TblLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransportTbl" EntityType="Self.TransportTbl" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FEEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BridgLoanTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="University" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FeeParticular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Semester" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Hostel_Allocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hostel_ID" Type="Int32" />
+          <Property Name="floor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Room_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Room_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Enrollment_ID" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Bed_Number" Type="Int32" />
+          <Property Name="Allocation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Allocated_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Allocation_Start" Type="DateTime" Precision="0" />
+          <Property Name="Allocation_End" Type="DateTime" Precision="0" />
+          <Property Name="Allocation_Status" Type="Boolean" />
+          <Property Name="Prev_Room" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Prev_Hostel" Type="Int32" />
+          <Property Name="EmailID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Hostel_Master">
+          <Key>
+            <PropertyRef Name="Hostel_ID" />
+          </Key>
+          <Property Name="Hostel_ID" Type="Int32" Nullable="false" />
+          <Property Name="Hostel_Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Incharge_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Incharge_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Incharge_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Pincode" Type="Int32" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HostelFeesTbl">
+          <Key>
+            <PropertyRef Name="HostelFeeID" />
+          </Key>
+          <Property Name="HostelFeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HostelID" Type="Int32" />
+          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="YearPeriod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="TotalRooms" Type="Int32" />
+          <Property Name="HostelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AvailableRooms" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MessFeesTbl">
+          <Key>
+            <PropertyRef Name="MessFeeID" />
+          </Key>
+          <Property Name="MessFeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MessID" Type="Int32" />
+          <Property Name="MealPlan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MessAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="YearPeriod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PenaltyDetailsTbl">
+          <Key>
+            <PropertyRef Name="PenaltyID" />
+          </Key>
+          <Property Name="PenaltyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PenaltyType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnrollmentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProgramTbl">
+          <Key>
+            <PropertyRef Name="ProgramID" />
+          </Key>
+          <Property Name="ProgramID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniversityID" Type="Int32" />
+          <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramShortForm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SchoolDept" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ProgramStaff" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="YearProgram" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ReRegistrationDetailsTbl">
+          <Key>
+            <PropertyRef Name="ReRegID" />
+          </Key>
+          <Property Name="ReRegID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnrollmentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UniversityID" Type="Int32" />
+          <Property Name="ProgramID" Type="Int32" />
+          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SemesterFeesTbl">
+          <Key>
+            <PropertyRef Name="FeeID" />
+          </Key>
+          <Property Name="FeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramID" Type="Int32" />
+          <Property Name="FeeParticular" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DueDate" Type="DateTime" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Semester" Type="Int32" />
+          <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StudentProgramTbl">
+          <Key>
+            <PropertyRef Name="StudentProgramID" />
+          </Key>
+          <Property Name="StudentProgramID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" />
+          <Property Name="AppNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnrollmentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramID" Type="Int32" />
+          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentSemester" Type="Int32" />
+          <Property Name="ProgramName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StudentTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AppNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnrollmentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="WhatsAppNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyIncome" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Caste" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AadhaarNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Batch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblCashOnDeposit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="University" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepositAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DepositDate" Type="DateTime" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TblDue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="University" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnrollmentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StudentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DuePurpose" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TblFeeDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnrollmentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramID" Type="Int32" />
+          <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FeeParticular" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DueAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Paid" Type="Boolean" />
+          <Property Name="TransactionOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+          <Property Name="TransactionAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="CurrentSemester" Type="Int32" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HostelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfPapers" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TblLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TransportTbl">
+          <Key>
+            <PropertyRef Name="TransportID" />
+          </Key>
+          <Property Name="TransportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniversityID" Type="Int32" />
+          <Property Name="TransportRoute" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TransportAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="YearPeriod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="UniversityName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="FEEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BridgLoanTbls" EntityType="Self.BridgLoanTbl" />
+          <EntitySet Name="Hostel_Allocation" EntityType="Self.Hostel_Allocation" />
+          <EntitySet Name="Hostel_Master" EntityType="Self.Hostel_Master" />
+          <EntitySet Name="HostelFeesTbls" EntityType="Self.HostelFeesTbl" />
+          <EntitySet Name="MessFeesTbls" EntityType="Self.MessFeesTbl" />
+          <EntitySet Name="PenaltyDetailsTbls" EntityType="Self.PenaltyDetailsTbl" />
+          <EntitySet Name="ProgramTbls" EntityType="Self.ProgramTbl" />
+          <EntitySet Name="ReRegistrationDetailsTbls" EntityType="Self.ReRegistrationDetailsTbl" />
+          <EntitySet Name="SemesterFeesTbls" EntityType="Self.SemesterFeesTbl" />
+          <EntitySet Name="StudentProgramTbls" EntityType="Self.StudentProgramTbl" />
+          <EntitySet Name="StudentTbls" EntityType="Self.StudentTbl" />
+          <EntitySet Name="TblCashOnDeposits" EntityType="Self.TblCashOnDeposit" />
+          <EntitySet Name="TblDues" EntityType="Self.TblDue" />
+          <EntitySet Name="TblFeeDetails" EntityType="Self.TblFeeDetail" />
+          <EntitySet Name="TblLogins" EntityType="Self.TblLogin" />
+          <EntitySet Name="TransportTbls" EntityType="Self.TransportTbl" />
+          <EntitySet Name="PersonalDetailsTbls" EntityType="FEEModel.PersonalDetailsTbl" />
+        </EntityContainer>
+        <EntityType Name="PersonalDetailsTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdmitCardNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnrollmentNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdmissionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FathersName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MothersName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Father_Age" Type="Int32" />
+          <Property Name="Mother_Age" Type="Int32" />
+          <Property Name="LocalGuardianAge" Type="Int32" />
+          <Property Name="AdmissionYear" Type="Int32" />
+          <Property Name="Program" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Branch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="RoomNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Height" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Weight" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BloodGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="PresentResidentialAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StudentAddress_Communication" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Father_Mobile_No" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Mother_Mobile_No" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="StudentContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FathersEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MothersEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianResidentialAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianRelationWithStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianOccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Parents_Income_Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Work_Experience" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Past_Health_History" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Details_Of_Past_Health_History" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AllergyNames" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="History_Of_Substance_Allergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Caste" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="AadharNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="stu_whatsappnum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Batch" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="University" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="History_of_drug_allergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FEEModelStoreContainer" CdmEntityContainer="FEEEntities">
+          <EntitySetMapping Name="BridgLoanTbls">
+            <EntityTypeMapping TypeName="FEEModel.BridgLoanTbl">
+              <MappingFragment StoreEntitySet="BridgLoanTbl">
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="FeeParticular" ColumnName="FeeParticular" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hostel_Allocation">
+            <EntityTypeMapping TypeName="FEEModel.Hostel_Allocation">
+              <MappingFragment StoreEntitySet="Hostel_Allocation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Hostel_ID" ColumnName="Hostel_ID" />
+                <ScalarProperty Name="floor" ColumnName="floor" />
+                <ScalarProperty Name="Room_Type" ColumnName="Room_Type" />
+                <ScalarProperty Name="Room_Number" ColumnName="Room_Number" />
+                <ScalarProperty Name="Enrollment_ID" ColumnName="Enrollment_ID" />
+                <ScalarProperty Name="Bed_Number" ColumnName="Bed_Number" />
+                <ScalarProperty Name="Allocation_Date" ColumnName="Allocation_Date" />
+                <ScalarProperty Name="Allocated_By" ColumnName="Allocated_By" />
+                <ScalarProperty Name="Allocation_Start" ColumnName="Allocation_Start" />
+                <ScalarProperty Name="Allocation_End" ColumnName="Allocation_End" />
+                <ScalarProperty Name="Allocation_Status" ColumnName="Allocation_Status" />
+                <ScalarProperty Name="Prev_Room" ColumnName="Prev_Room" />
+                <ScalarProperty Name="Prev_Hostel" ColumnName="Prev_Hostel" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hostel_Master">
+            <EntityTypeMapping TypeName="FEEModel.Hostel_Master">
+              <MappingFragment StoreEntitySet="Hostel_Master">
+                <ScalarProperty Name="Hostel_ID" ColumnName="Hostel_ID" />
+                <ScalarProperty Name="Hostel_Name" ColumnName="Hostel_Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Incharge_Name" ColumnName="Incharge_Name" />
+                <ScalarProperty Name="Incharge_Email" ColumnName="Incharge_Email" />
+                <ScalarProperty Name="Incharge_Number" ColumnName="Incharge_Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HostelFeesTbls">
+            <EntityTypeMapping TypeName="FEEModel.HostelFeesTbl">
+              <MappingFragment StoreEntitySet="HostelFeesTbl">
+                <ScalarProperty Name="HostelFeeID" ColumnName="HostelFeeID" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="HostelID" ColumnName="HostelID" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="RoomAmount" ColumnName="RoomAmount" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="YearPeriod" ColumnName="YearPeriod" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TotalRooms" ColumnName="TotalRooms" />
+                <ScalarProperty Name="HostelName" ColumnName="HostelName" />
+                <ScalarProperty Name="AvailableRooms" ColumnName="AvailableRooms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessFeesTbls">
+            <EntityTypeMapping TypeName="FEEModel.MessFeesTbl">
+              <MappingFragment StoreEntitySet="MessFeesTbl">
+                <ScalarProperty Name="MessFeeID" ColumnName="MessFeeID" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="MessID" ColumnName="MessID" />
+                <ScalarProperty Name="MealPlan" ColumnName="MealPlan" />
+                <ScalarProperty Name="MessAmount" ColumnName="MessAmount" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="YearPeriod" ColumnName="YearPeriod" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PenaltyDetailsTbls">
+            <EntityTypeMapping TypeName="FEEModel.PenaltyDetailsTbl">
+              <MappingFragment StoreEntitySet="PenaltyDetailsTbl">
+                <ScalarProperty Name="PenaltyID" ColumnName="PenaltyID" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="ApplicationNo" ColumnName="ApplicationNo" />
+                <ScalarProperty Name="PenaltyType" ColumnName="PenaltyType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramTbls">
+            <EntityTypeMapping TypeName="FEEModel.ProgramTbl">
+              <MappingFragment StoreEntitySet="ProgramTbl">
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="ProgramShortForm" ColumnName="ProgramShortForm" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="SchoolDept" ColumnName="SchoolDept" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ProgramStaff" ColumnName="ProgramStaff" />
+                <ScalarProperty Name="YearProgram" ColumnName="YearProgram" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReRegistrationDetailsTbls">
+            <EntityTypeMapping TypeName="FEEModel.ReRegistrationDetailsTbl">
+              <MappingFragment StoreEntitySet="ReRegistrationDetailsTbl">
+                <ScalarProperty Name="ReRegID" ColumnName="ReRegID" />
+                <ScalarProperty Name="AppNo" ColumnName="AppNo" />
+                <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
+                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SemesterFeesTbls">
+            <EntityTypeMapping TypeName="FEEModel.SemesterFeesTbl">
+              <MappingFragment StoreEntitySet="SemesterFeesTbl">
+                <ScalarProperty Name="FeeID" ColumnName="FeeID" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="FeeParticular" ColumnName="FeeParticular" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentProgramTbls">
+            <EntityTypeMapping TypeName="FEEModel.StudentProgramTbl">
+              <MappingFragment StoreEntitySet="StudentProgramTbl">
+                <ScalarProperty Name="StudentProgramID" ColumnName="StudentProgramID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="AppNo" ColumnName="AppNo" />
+                <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="CurrentSemester" ColumnName="CurrentSemester" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentTbls">
+            <EntityTypeMapping TypeName="FEEModel.StudentTbl">
+              <MappingFragment StoreEntitySet="StudentTbl">
+                <ScalarProperty Name="AppNo" ColumnName="AppNo" />
+                <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="WhatsAppNo" ColumnName="WhatsAppNo" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="FamilyIncome" ColumnName="FamilyIncome" />
+                <ScalarProperty Name="Caste" ColumnName="Caste" />
+                <ScalarProperty Name="AadhaarNo" ColumnName="AadhaarNo" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCashOnDeposits">
+            <EntityTypeMapping TypeName="FEEModel.TblCashOnDeposit">
+              <MappingFragment StoreEntitySet="TblCashOnDeposit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="DepositAmount" ColumnName="DepositAmount" />
+                <ScalarProperty Name="DepositDate" ColumnName="DepositDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDues">
+            <EntityTypeMapping TypeName="FEEModel.TblDue">
+              <MappingFragment StoreEntitySet="TblDues">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
+                <ScalarProperty Name="ApplicationNo" ColumnName="ApplicationNo" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="DuePurpose" ColumnName="DuePurpose" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblFeeDetails">
+            <EntityTypeMapping TypeName="FEEModel.TblFeeDetail">
+              <MappingFragment StoreEntitySet="TblFeeDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="FeeParticular" ColumnName="FeeParticular" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="DueAmount" ColumnName="DueAmount" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="TransactionOrder" ColumnName="TransactionOrder" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="TransactionStatus" ColumnName="TransactionStatus" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CurrentSemester" ColumnName="CurrentSemester" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="HostelName" ColumnName="HostelName" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="NoOfPapers" ColumnName="NoOfPapers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblLogins">
+            <EntityTypeMapping TypeName="FEEModel.TblLogin">
+              <MappingFragment StoreEntitySet="TblLogin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransportTbls">
+            <EntityTypeMapping TypeName="FEEModel.TransportTbl">
+              <MappingFragment StoreEntitySet="TransportTbl">
+                <ScalarProperty Name="TransportID" ColumnName="TransportID" />
+                <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+                <ScalarProperty Name="TransportRoute" ColumnName="TransportRoute" />
+                <ScalarProperty Name="TransportAmount" ColumnName="TransportAmount" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="YearPeriod" ColumnName="YearPeriod" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalDetailsTbls">
+            <EntityTypeMapping TypeName="FEEModel.PersonalDetailsTbl">
+              <MappingFragment StoreEntitySet="PersonalDetailsTbl">
+                <ScalarProperty Name="History_of_drug_allergy" ColumnName="History_of_drug_allergy" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="stu_whatsappnum" ColumnName="stu_whatsappnum" />
+                <ScalarProperty Name="AadharNumber" ColumnName="AadharNumber" />
+                <ScalarProperty Name="Caste" ColumnName="Caste" />
+                <ScalarProperty Name="History_Of_Substance_Allergy" ColumnName="History_Of_Substance_Allergy" />
+                <ScalarProperty Name="AllergyNames" ColumnName="AllergyNames" />
+                <ScalarProperty Name="Details_Of_Past_Health_History" ColumnName="Details_Of_Past_Health_History" />
+                <ScalarProperty Name="Past_Health_History" ColumnName="Past_Health_History" />
+                <ScalarProperty Name="Work_Experience" ColumnName="Work_Experience" />
+                <ScalarProperty Name="Parents_Income_Category" ColumnName="Parents_Income_Category" />
+                <ScalarProperty Name="LocalGuardianOccupation" ColumnName="LocalGuardianOccupation" />
+                <ScalarProperty Name="LocalGuardianRelationWithStudent" ColumnName="LocalGuardianRelationWithStudent" />
+                <ScalarProperty Name="LocalGuardianEmail" ColumnName="LocalGuardianEmail" />
+                <ScalarProperty Name="LocalGuardianContactNo" ColumnName="LocalGuardianContactNo" />
+                <ScalarProperty Name="LocalGuardianResidentialAddress" ColumnName="LocalGuardianResidentialAddress" />
+                <ScalarProperty Name="LocalGuardianName" ColumnName="LocalGuardianName" />
+                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+                <ScalarProperty Name="MothersEmail" ColumnName="MothersEmail" />
+                <ScalarProperty Name="FathersEmail" ColumnName="FathersEmail" />
+                <ScalarProperty Name="StudentContactNo" ColumnName="StudentContactNo" />
+                <ScalarProperty Name="Mother_Mobile_No" ColumnName="Mother_Mobile_No" />
+                <ScalarProperty Name="Father_Mobile_No" ColumnName="Father_Mobile_No" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="StudentAddress_Communication" ColumnName="StudentAddress_Communication" />
+                <ScalarProperty Name="PresentResidentialAddress" ColumnName="PresentResidentialAddress" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="AdmissionYear" ColumnName="AdmissionYear" />
+                <ScalarProperty Name="LocalGuardianAge" ColumnName="LocalGuardianAge" />
+                <ScalarProperty Name="Mother_Age" ColumnName="Mother_Age" />
+                <ScalarProperty Name="Father_Age" ColumnName="Father_Age" />
+                <ScalarProperty Name="MothersName" ColumnName="MothersName" />
+                <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+                <ScalarProperty Name="AdmissionNo" ColumnName="AdmissionNo" />
+                <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
+                <ScalarProperty Name="AdmitCardNo" ColumnName="AdmitCardNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
