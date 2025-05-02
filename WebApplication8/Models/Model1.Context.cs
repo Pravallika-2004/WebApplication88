@@ -13,10 +13,10 @@ namespace WebApplication8.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FEEEntities : DbContext
+    public partial class FEEEntities1 : DbContext
     {
-        public FEEEntities()
-            : base("name=FEEEntities")
+        public FEEEntities1()
+            : base("name=FEEEntities1")
         {
         }
     
@@ -31,6 +31,7 @@ namespace WebApplication8.Models
         public virtual DbSet<HostelFeesTbl> HostelFeesTbls { get; set; }
         public virtual DbSet<MessFeesTbl> MessFeesTbls { get; set; }
         public virtual DbSet<PenaltyDetailsTbl> PenaltyDetailsTbls { get; set; }
+        public virtual DbSet<PersonalDetailsTbl> PersonalDetailsTbls { get; set; }
         public virtual DbSet<ProgramTbl> ProgramTbls { get; set; }
         public virtual DbSet<ReRegistrationDetailsTbl> ReRegistrationDetailsTbls { get; set; }
         public virtual DbSet<SemesterFeesTbl> SemesterFeesTbls { get; set; }
@@ -41,6 +42,5 @@ namespace WebApplication8.Models
         public virtual DbSet<TblFeeDetail> TblFeeDetails { get; set; }
         public virtual DbSet<TblLogin> TblLogins { get; set; }
         public virtual DbSet<TransportTbl> TransportTbls { get; set; }
-        public virtual DbSet<PersonalDetailsTbl> PersonalDetailsTbls { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FEEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FEEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BridgLoanTbl">
           <Key>
             <PropertyRef Name="Id" />
@@ -338,7 +338,8 @@
           <EntitySet Name="TblLogin" EntityType="Self.TblLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransportTbl" EntityType="Self.TransportTbl" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FEEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -436,6 +437,61 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EnrollmentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PersonalDetailsTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdmitCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EnrollmentNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdmissionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FathersName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MothersName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Father_Age" Type="Int32" />
+          <Property Name="Mother_Age" Type="Int32" />
+          <Property Name="LocalGuardianAge" Type="Int32" />
+          <Property Name="AdmissionYear" Type="Int32" />
+          <Property Name="Program" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Branch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="RoomNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Height" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Weight" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BloodGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="PresentResidentialAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StudentAddress_Communication" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Father_Mobile_No" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Mother_Mobile_No" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="StudentContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FathersEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MothersEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianResidentialAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianRelationWithStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LocalGuardianOccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Parents_Income_Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Work_Experience" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Past_Health_History" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Details_Of_Past_Health_History" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AllergyNames" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="History_Of_Substance_Allergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Caste" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="AadharNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="stu_whatsappnum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Batch" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="University" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="History_of_drug_allergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ProgramTbl">
           <Key>
@@ -601,13 +657,14 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="UniversityName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="FEEEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FEEEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BridgLoanTbls" EntityType="Self.BridgLoanTbl" />
           <EntitySet Name="Hostel_Allocation" EntityType="Self.Hostel_Allocation" />
           <EntitySet Name="Hostel_Master" EntityType="Self.Hostel_Master" />
           <EntitySet Name="HostelFeesTbls" EntityType="Self.HostelFeesTbl" />
           <EntitySet Name="MessFeesTbls" EntityType="Self.MessFeesTbl" />
           <EntitySet Name="PenaltyDetailsTbls" EntityType="Self.PenaltyDetailsTbl" />
+          <EntitySet Name="PersonalDetailsTbls" EntityType="Self.PersonalDetailsTbl" />
           <EntitySet Name="ProgramTbls" EntityType="Self.ProgramTbl" />
           <EntitySet Name="ReRegistrationDetailsTbls" EntityType="Self.ReRegistrationDetailsTbl" />
           <EntitySet Name="SemesterFeesTbls" EntityType="Self.SemesterFeesTbl" />
@@ -618,69 +675,13 @@
           <EntitySet Name="TblFeeDetails" EntityType="Self.TblFeeDetail" />
           <EntitySet Name="TblLogins" EntityType="Self.TblLogin" />
           <EntitySet Name="TransportTbls" EntityType="Self.TransportTbl" />
-          <EntitySet Name="PersonalDetailsTbls" EntityType="FEEModel.PersonalDetailsTbl" />
         </EntityContainer>
-        <EntityType Name="PersonalDetailsTbl">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AdmitCardNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EnrollmentNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AdmissionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="FathersName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MothersName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Father_Age" Type="Int32" />
-          <Property Name="Mother_Age" Type="Int32" />
-          <Property Name="LocalGuardianAge" Type="Int32" />
-          <Property Name="AdmissionYear" Type="Int32" />
-          <Property Name="Program" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Branch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="RoomNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Age" Type="Int32" />
-          <Property Name="Height" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Weight" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="BloodGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
-          <Property Name="PresentResidentialAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="StudentAddress_Communication" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Father_Mobile_No" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Mother_Mobile_No" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="StudentContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="FathersEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MothersEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LocalGuardianName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LocalGuardianResidentialAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="LocalGuardianContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="LocalGuardianEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LocalGuardianRelationWithStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LocalGuardianOccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Parents_Income_Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Work_Experience" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Past_Health_History" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Details_Of_Past_Health_History" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AllergyNames" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="History_Of_Substance_Allergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Caste" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="AadharNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="stu_whatsappnum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Batch" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="University" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="History_of_drug_allergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FEEModelStoreContainer" CdmEntityContainer="FEEEntities">
+        <EntityContainerMapping StorageEntityContainer="FEEModelStoreContainer" CdmEntityContainer="FEEEntities1">
           <EntitySetMapping Name="BridgLoanTbls">
             <EntityTypeMapping TypeName="FEEModel.BridgLoanTbl">
               <MappingFragment StoreEntitySet="BridgLoanTbl">
@@ -779,6 +780,62 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
                 <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalDetailsTbls">
+            <EntityTypeMapping TypeName="FEEModel.PersonalDetailsTbl">
+              <MappingFragment StoreEntitySet="PersonalDetailsTbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdmitCardNo" ColumnName="AdmitCardNo" />
+                <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
+                <ScalarProperty Name="AdmissionNo" ColumnName="AdmissionNo" />
+                <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+                <ScalarProperty Name="MothersName" ColumnName="MothersName" />
+                <ScalarProperty Name="Father_Age" ColumnName="Father_Age" />
+                <ScalarProperty Name="Mother_Age" ColumnName="Mother_Age" />
+                <ScalarProperty Name="LocalGuardianAge" ColumnName="LocalGuardianAge" />
+                <ScalarProperty Name="AdmissionYear" ColumnName="AdmissionYear" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="PresentResidentialAddress" ColumnName="PresentResidentialAddress" />
+                <ScalarProperty Name="StudentAddress_Communication" ColumnName="StudentAddress_Communication" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Father_Mobile_No" ColumnName="Father_Mobile_No" />
+                <ScalarProperty Name="Mother_Mobile_No" ColumnName="Mother_Mobile_No" />
+                <ScalarProperty Name="StudentContactNo" ColumnName="StudentContactNo" />
+                <ScalarProperty Name="FathersEmail" ColumnName="FathersEmail" />
+                <ScalarProperty Name="MothersEmail" ColumnName="MothersEmail" />
+                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+                <ScalarProperty Name="LocalGuardianName" ColumnName="LocalGuardianName" />
+                <ScalarProperty Name="LocalGuardianResidentialAddress" ColumnName="LocalGuardianResidentialAddress" />
+                <ScalarProperty Name="LocalGuardianContactNo" ColumnName="LocalGuardianContactNo" />
+                <ScalarProperty Name="LocalGuardianEmail" ColumnName="LocalGuardianEmail" />
+                <ScalarProperty Name="LocalGuardianRelationWithStudent" ColumnName="LocalGuardianRelationWithStudent" />
+                <ScalarProperty Name="LocalGuardianOccupation" ColumnName="LocalGuardianOccupation" />
+                <ScalarProperty Name="Parents_Income_Category" ColumnName="Parents_Income_Category" />
+                <ScalarProperty Name="Work_Experience" ColumnName="Work_Experience" />
+                <ScalarProperty Name="Past_Health_History" ColumnName="Past_Health_History" />
+                <ScalarProperty Name="Details_Of_Past_Health_History" ColumnName="Details_Of_Past_Health_History" />
+                <ScalarProperty Name="AllergyNames" ColumnName="AllergyNames" />
+                <ScalarProperty Name="History_Of_Substance_Allergy" ColumnName="History_Of_Substance_Allergy" />
+                <ScalarProperty Name="Caste" ColumnName="Caste" />
+                <ScalarProperty Name="AadharNumber" ColumnName="AadharNumber" />
+                <ScalarProperty Name="stu_whatsappnum" ColumnName="stu_whatsappnum" />
+                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="History_of_drug_allergy" ColumnName="History_of_drug_allergy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -953,62 +1010,6 @@
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PersonalDetailsTbls">
-            <EntityTypeMapping TypeName="FEEModel.PersonalDetailsTbl">
-              <MappingFragment StoreEntitySet="PersonalDetailsTbl">
-                <ScalarProperty Name="History_of_drug_allergy" ColumnName="History_of_drug_allergy" />
-                <ScalarProperty Name="University" ColumnName="University" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
-                <ScalarProperty Name="stu_whatsappnum" ColumnName="stu_whatsappnum" />
-                <ScalarProperty Name="AadharNumber" ColumnName="AadharNumber" />
-                <ScalarProperty Name="Caste" ColumnName="Caste" />
-                <ScalarProperty Name="History_Of_Substance_Allergy" ColumnName="History_Of_Substance_Allergy" />
-                <ScalarProperty Name="AllergyNames" ColumnName="AllergyNames" />
-                <ScalarProperty Name="Details_Of_Past_Health_History" ColumnName="Details_Of_Past_Health_History" />
-                <ScalarProperty Name="Past_Health_History" ColumnName="Past_Health_History" />
-                <ScalarProperty Name="Work_Experience" ColumnName="Work_Experience" />
-                <ScalarProperty Name="Parents_Income_Category" ColumnName="Parents_Income_Category" />
-                <ScalarProperty Name="LocalGuardianOccupation" ColumnName="LocalGuardianOccupation" />
-                <ScalarProperty Name="LocalGuardianRelationWithStudent" ColumnName="LocalGuardianRelationWithStudent" />
-                <ScalarProperty Name="LocalGuardianEmail" ColumnName="LocalGuardianEmail" />
-                <ScalarProperty Name="LocalGuardianContactNo" ColumnName="LocalGuardianContactNo" />
-                <ScalarProperty Name="LocalGuardianResidentialAddress" ColumnName="LocalGuardianResidentialAddress" />
-                <ScalarProperty Name="LocalGuardianName" ColumnName="LocalGuardianName" />
-                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
-                <ScalarProperty Name="MothersEmail" ColumnName="MothersEmail" />
-                <ScalarProperty Name="FathersEmail" ColumnName="FathersEmail" />
-                <ScalarProperty Name="StudentContactNo" ColumnName="StudentContactNo" />
-                <ScalarProperty Name="Mother_Mobile_No" ColumnName="Mother_Mobile_No" />
-                <ScalarProperty Name="Father_Mobile_No" ColumnName="Father_Mobile_No" />
-                <ScalarProperty Name="Religion" ColumnName="Religion" />
-                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
-                <ScalarProperty Name="StudentAddress_Communication" ColumnName="StudentAddress_Communication" />
-                <ScalarProperty Name="PresentResidentialAddress" ColumnName="PresentResidentialAddress" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Branch" ColumnName="Branch" />
-                <ScalarProperty Name="Program" ColumnName="Program" />
-                <ScalarProperty Name="AdmissionYear" ColumnName="AdmissionYear" />
-                <ScalarProperty Name="LocalGuardianAge" ColumnName="LocalGuardianAge" />
-                <ScalarProperty Name="Mother_Age" ColumnName="Mother_Age" />
-                <ScalarProperty Name="Father_Age" ColumnName="Father_Age" />
-                <ScalarProperty Name="MothersName" ColumnName="MothersName" />
-                <ScalarProperty Name="FathersName" ColumnName="FathersName" />
-                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
-                <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
-                <ScalarProperty Name="AdmissionNo" ColumnName="AdmissionNo" />
-                <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />
-                <ScalarProperty Name="AdmitCardNo" ColumnName="AdmitCardNo" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
