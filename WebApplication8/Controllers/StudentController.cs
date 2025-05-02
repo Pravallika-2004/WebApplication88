@@ -16,13 +16,11 @@ namespace WebApplication8.Controllers
         // GET: Student Dashboard
         public ActionResult StudentDashboard()
         {
-            // Check if student is logged in
             if (Session["StudentId"] == null)
             {
-                return RedirectToAction("Loginpage", "Login"); // Redirect to login page if not logged in
+                return RedirectToAction("Loginpage", "Login");
             }
 
-            // Fetch student details based on session data (StudentId)
             int studentId = (int)Session["StudentId"];
             var student = db.StudentTbls.FirstOrDefault(s => s.Id == studentId);
 
@@ -31,9 +29,18 @@ namespace WebApplication8.Controllers
                 return HttpNotFound();
             }
 
-            // Pass student data to the dashboard view
+            string enrollmentNo = student.EnrollmentNo?.Trim().ToLower();
+
+            bool hasPersonalDetails = db.PersonalDetailsTbls
+                .Any(p => p.EnrollmentNo.Trim().ToLower() == enrollmentNo);
+
+            ViewBag.HasPersonalDetails = hasPersonalDetails;
+
             return View(student);
         }
+
+
+
 
 
 

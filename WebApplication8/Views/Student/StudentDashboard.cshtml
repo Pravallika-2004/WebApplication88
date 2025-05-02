@@ -240,26 +240,33 @@
     <!-- Main Content -->
     <div class="main-content">
         <!-- Button Container -->
-        <div class="button-container">
-            <a href="@Url.Action("MBAstuPersonalData", "Student")" class="btn btn-primary">MBA Student Personal Data Form</a>
-            <a href="@Url.Action("UndertakingFormbyParent", "Student")" class="btn btn-primary">Undertaking by Parent/Guardian(V/D)</a>
-            <a href="@Url.Action("UndertakingFormbyParent_gau", "Student")" class="btn btn-primary">Undertaking by Parent/Guardian(V/B)</a>
-            <a href="@Url.Action("undertakingbyparVC", "Student")" class="btn btn-primary">Undertaking by Parent/Guardian(V/C)</a>
-            <a href="@Url.Action("UndertakingFormbystuVF", "Student")" class="btn btn-primary">Undertaking by Student(V/F)</a>
-            <a href="@Url.Action("UndertakingFormbystuVA", "Student")" class="btn btn-primary">Undertaking Of The Parent/Guardian(V/A)</a>
-            <a href="@Url.Action("HostelAllotmentRequestForm", "Student")" class="btn btn-primary">Hostel Allotment Request Form</a>
-            <a href="@Url.Action("HealthRecord", "Student")" class="btn btn-primary">Health Record</a>
-            <a href="@Url.Action("HostelRulesRegulations2018", "Student")" class="btn btn-primary">Hostel Rules and regulations 2018</a>
-            <a href="@Url.Action("Antiragging", "Student")" class="btn btn-primary">Antiragging Guidelines</a>
-            <a href="@Url.Action("sis", "Student")" class="btn btn-primary">SIS guidelines</a>
-            <a href="@Url.Action("WLD", "Student")" class="btn btn-primary">Welcome Letter(IBS)</a>
+        @if (ViewBag.HasPersonalDetails == true)
+        {
+            <div class="button-container">
+                <a href="@Url.Action("MBAstuPersonalData", "Student")" class="btn btn-primary">MBA Student Personal Data Form</a>
+                <a href="@Url.Action("UndertakingFormbyParent", "Student")" class="btn btn-primary">Undertaking by Parent/Guardian(V/D)</a>
+                <a href="@Url.Action("UndertakingFormbyParent_gau", "Student")" class="btn btn-primary">Undertaking by Parent/Guardian(V/B)</a>
+                <a href="@Url.Action("undertakingbyparVC", "Student")" class="btn btn-primary">Undertaking by Parent/Guardian(V/C)</a>
+                <a href="@Url.Action("UndertakingFormbystuVF", "Student")" class="btn btn-primary">Undertaking by Student(V/F)</a>
+                <a href="@Url.Action("UndertakingFormbystuVA", "Student")" class="btn btn-primary">Undertaking Of The Parent/Guardian(V/A)</a>
+                <a href="@Url.Action("HostelAllotmentRequestForm", "Student")" class="btn btn-primary">Hostel Allotment Request Form</a>
+                <a href="@Url.Action("HealthRecord", "Student")" class="btn btn-primary">Health Record</a>
+                <a href="@Url.Action("HostelRulesRegulations2018", "Student")" class="btn btn-primary">Hostel Rules and regulations 2018</a>
+                <a href="@Url.Action("Antiragging", "Student")" class="btn btn-primary">Antiragging Guidelines</a>
+                <a href="@Url.Action("sis", "Student")" class="btn btn-primary">SIS guidelines</a>
+                <a href="@Url.Action("WLD", "Student")" class="btn btn-primary">Welcome Letter(IBS)</a>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning text-center mt-5" style="font-size: 1.1rem;">
+                ⚠️ Please complete your personal details first.
+            </div>
+            <div class="text-center mt-3">
+                <a href="@Url.Action("PersonalDetails", "Student")" class="btn btn-warning">Fill Personal Details</a>
+            </div>
+        }
 
-
-
-
-
-            <!-- Add more buttons here as needed -->
-        </div>
     </div>
 
     <!-- Footer with Copyright -->
