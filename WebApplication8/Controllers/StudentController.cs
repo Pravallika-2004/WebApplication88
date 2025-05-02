@@ -588,6 +588,12 @@ namespace WebApplication8.Controllers
             return View(viewModel);
         }
 
+        public ActionResult HostelRulesRegulations2018()
+        {
+            return View();
+        }
+
+
 
     }
 

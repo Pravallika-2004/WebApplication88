@@ -1,0 +1,273 @@
+﻿@model WebApplication8.Models.Healthhistoryform
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIS Portal Guidelines Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #1a3c6c;
+        }
+
+        h1 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .note {
+            font-style: italic;
+            color: #666;
+        }
+
+        .mandatory {
+            font-weight: bold;
+            color: #d9534f;
+        }
+
+        .link {
+            color: #1a3c6c;
+            text-decoration: none;
+        }
+
+            .link:hover {
+                text-decoration: underline;
+            }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+                .form-group input[type="file"] {
+                    padding: 3px;
+                }
+
+            .form-group button {
+                padding: 10px 20px;
+                background-color: #1a3c6c;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .form-group button:hover {
+                    background-color: #15315a;
+                }
+    </style>
+</head>
+<body>
+    <h1>THE ICFAI FOUNDATION FOR HIGHER EDUCATION, HYDERABAD</h1>
+    <h2>WELCOME TO ICFAI Business School, HYDERABAD</h2>
+    <h2>STUDENT INFORMATION SYSTEM (SIS) PORTAL</h2>
+    <p>May 02, 2023</p>
+    <p>Dear Student,</p>
+    <p>Welcome to ICFAI Business School (IBS), Hyderabad.</p>
+    <p>Congratulations for securing admission to Master of Business Administration (MBA) Program 2023-2025. In the next Two Years all the Academic and Campus Support Information can be accessed through the University’s “STUDENT INFORMATION SYSTEM” (SIS) through one of the following links.</p>
+    <p><strong>14.99.204.228/szor111.93.16.209/sz</strong> or <strong>115.241.195.211/sz</strong></p>
+    <p><em>****Copy and Paste the above link in the URL or manually enter in the URL***</em></p>
+    <p>As mentioned in the Enrollment Letter all the students are required to fill & upload the necessary documents in SIS portal using the above links on or before <strong>May 07, 2023</strong> to enable us to check the information filled and uploaded.</p>
+    <p><span class="mandatory">****Please note the guidelines, fill the columns and upload the documents without fail to register yourself into the program.*</span></p>
+
+    <h2>To access the SIS portal, kindly log in with:</h2>
+    <ul>
+        <li>Your User Name =“Enrollment Number” (i.e. 23BSPHH01C XXXX)</li>
+        <li>Your Password= password (your password is password only)</li>
+    </ul>
+    <p class="note">*Note: Please change the password and memorize it after 1st login.</p>
+    <p class="mandatory">**ALL THE FIELDS ARE MANDATORY TO FILL/ UPLOAD**</p>
+
+    <table>
+        <tr>
+            <th>Menu Options</th>
+            <th>Detailed description</th>
+        </tr>
+        <tr>
+            <td><strong>My Info</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Upload Photo</td>
+            <td>Upload your recent passport size photograph in formal attire. File Size <300kb, format: JPEG</td>
+        </tr>
+        <tr>
+            <td>Profile Video</td>
+            <td>Shoot a video of less than 4mb and upload. (Model video attached)</td>
+        </tr>
+        <tr>
+            <td>Transfer Certificate</td>
+            <td>Upload a copy of your Transfer Certificate in the space provided and submit the original hard copy during the Registration process along with other documents mentioned in the Enrollment Letter. In case you don’t have, please apply for the same and submit on or before October 31, 2023. File Size <4MB.</td>
+        </tr>
+        <tr>
+            <td>Migration Certificate</td>
+            <td>Upload a copy of your Migration Certificate in the space provided and submit the original hard copy during the Registration process along with other documents mentioned in the Enrollment Letter. If you don’t have please apply for the same and submit on or before October 31, 2023. File Size <4MB.</td>
+        </tr>
+        <tr>
+            <td>Upload Resume</td>
+            <td>No need of uploading of any resume here, you can skip this.</td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>All contact details like Mobile / Landline / email ids / home town / native place / Birth place / home state etc., should be filled without any mistakes.</td>
+        </tr>
+        <tr>
+            <td>Profile</td>
+            <td>Students are required to fill the objective, Work Experience if any, qualifications –X class, XII class, Degree etc., Upon filling the details of your qualifications in respective fields provided, one after the other , the Certificates Upload option will be visible for uploading the respective certificates, Upload the Certificates only in one single PDF format in respective qualification field . While entering the marks/ percentage avoid symbols like %.<br />if you have more than one document Merge the same and make it as a single file and upload. File size should be less than 4MB. <br />NOTE: Kindly upload CGPA to percentage calculation sheet along with your UG/Degree Certificates.<br />Mention details of Computer proficiency, Awards or Achievements, Extra-Curricular activities, languages known.<br />Area of interest like Finance / Marketing / IT / HR / Operations / Insurance & Health Care Management etc.,</td>
+        </tr>
+        <tr>
+            <td>Personal Data Form</td>
+            <td>Fill your email id, mobile number, Nationality, Religion, Work- Experience-(in months only)<br />Father Details-Name/Qualification/Profession/Organization/mobile/email id<br />Mother details- Name / Qualification/Profession/Organization/mobile # / email id.<br />IfLocalguardianisavailableinHyderabadprovidedetails- Name/Qualification/ Profession / Organization/mobile # / email id.</td>
+        </tr>
+        <tr>
+            <td>Medical Form</td>
+            <td>Provide your medical record along with Blood group/ height & weight etc., This data will help us to keep required medicines in the campus clinic for First Aid purposes.</td>
+        </tr>
+        <tr>
+            <td>Family doctor</td>
+            <td>Name and contact details for emergency purpose.</td>
+        </tr>
+        <tr>
+            <td>My Resume</td>
+            <td>Once you fill the above details you will be able to view the filled data In My Resume Field.</td>
+        </tr>
+        <tr>
+            <td>Permanent Address</td>
+            <td>Students are required to fill their Permanent Address</td>
+        </tr>
+        <tr>
+            <td>Present Address</td>
+            <td>Fill all the fields compulsorily.</td>
+        </tr>
+        <tr>
+            <td>Mailing Address</td>
+            <td>Students are required to fill their mailing address, for sending courier/ communications, if any</td>
+        </tr>
+        <tr>
+            <td>Local Address</td>
+            <td>Students are required to fill the local Guardian Address, if any, required for any Emergency</td>
+        </tr>
+        <tr>
+            <td>Bank Account details</td>
+            <td>Fill all the fields compulsorily. No omissions of Zeros prior to the Account number. Account holder Name/Bank Name/IFSC code/Branch<br />Name/City etc.</td>
+        </tr>
+        <tr>
+            <td><strong>Use of STUDENT INFORMATION SYSTEM (SIS)</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Notice<br />Notices/Documents:</td>
+            <td><br />Notices from Academics Dept., Student Services Department (SSD), Examinations, Clubs & Events Department, and Case Research Center, General Administration Department (Hostel, Mess, Security, Clinic, Sports & games – maintenance & upkeep), Psychological health and counselors will be visible in this section.<br />Students are required to access this OPTION on regular basis for updates.<br /></td>
+        </tr>
+        <tr>
+            <td>Documents</td>
+            <td>Student Handbook , SIP Handbook Etc</td>
+        </tr>
+        <tr>
+            <td>Announcements</td>
+            <td>Students will receive Announcements made by Faculty Members</td>
+        </tr>
+        <tr>
+            <td>FeedBack</td>
+            <td>Students are required to give feedback on Curriculum</td>
+        </tr>
+        <tr>
+            <td>Fee<br />Fee Structure<br />My Fee Schedule<br />Receipts Statement<br /><br />PDC’s Payments</td>
+            <td><br />Students will find fee details/ particulars to be paid in each head of account Semester / Installment wise of entire program.<br />Fee to be paid by the student for a particular semester<br />Fee paid details are visible to students. Students may take print of the Receipt if required.<br />Under construction<br />Students availing bridge loan Facility in Semester I and paying the first Semester fee as per Enrollment Letter under Bridge loan facility, the submitted postdated cheques Information is visible to students in this field.<br />Students are required to fill the payment details mandatorily after making the payment in any of the modes like DD/Online/RTGS/IMPS/NEFT in respective payment fields provided.</td>
+        </tr>
+        <tr>
+            <td>Academic<br />Mentor<br /><br />Registration Course Registration<br />Course Registered(All)<br />My Faculty<br />Online Classes Link<br />Resources<br />Attendance %<br />Attendance Subject Wise Continual Evaluation(CP)<br />Cont. Evaluation online<br />Exam Schedule Continual Evaluation (NCP)<br />Grade List Online Exam<br />Suggested Answers</td>
+            <td><br />Each student will be allotted a Faculty Mentor, with name and contact details. Students can view their mentors in this field.<br />Students may approach respective mentor for all Academic and Personal issues.<br />Students can view their semester wise Registration dates.<br />Students can view all the courses registered, semester wise. <br />Students can view Complete Course Registered list of all semesters<br />Students can view Semester Wise Faculty list of particular section<br />Students will be able to view Section Wise online Class Link<br />(Under Construction)<br />Students can view Subject wise, Day wise and Summary of attendance <br />Students can view Subject wise attendance.<br />Students can view Class Participation marks awarded by faculty subject wise. <br />(Under Construction)<br />End Term/Mid Term Exam Schedule will be displayed<br />Students can view Test scores semester wise.<br />Students can view semester wise grade sheet including grade point average. Online exam scores subject wise / semester wise.<br />(Under Construction)</td>
+        </tr>
+        <tr>
+            <td>Help Desk<br />Complaints<br /><br /><br />Leave Form (Hosteler)<br />Certificate(S) Issues<br />Transport Requisition<br />Room Shift<br />Room Vacate<br />No Due Certificate<br /><br />Luggage Form</td>
+            <td><br />Students can register their complaints for maintenance and upkeep of rooms, electrical works, Housekeeping, furniture, Wi-Fi, LAN and Sanitization etc.<br /> Students are required to apply leave online, take print of the same for approval.<br />Students can apply for Bonafide certificate/Course completion certificate/No dues certificate, Transfer Certificate etc.,<br />Students may post queries related to Attendance/CGPA/Fee/Grades/Hostel/Mess/Scholarship/Time Table etc <br /><br /> Not applicable for MBA Students<br />(Under Construction)<br />(Under Construction)<br />Students are required to download ‘No Due’ form.The Hard copy is to be endorsed by all departments and submitted before leaving the campus in case of withdrawal or after completing the course<br />Students are required to fill the form and submit at hostel physically when he/she are in vacation.</td>
+        </tr>
+        <tr>
+            <td>Transport Routes</td>
+            <td>Not applicable for MBA Students</td>
+        </tr>
+        <tr>
+            <td>Placements</td>
+            <td>Activated during placements time</td>
+        </tr>
+        <tr>
+            <td>Activities<br />Assignments<br />Exam</td>
+            <td>Any assignments given by particular section faculty will be viewed by you<br />Online internal exam link will be enabled during Examinations</td>
+        </tr>
+        <tr>
+            <td>Resources<br />Links<br /><br />Documents</td>
+            <td>Any external links for a particular subject given by particular faculty will be viewed here.<br />Any documents like course handouts etc given by particular faculty will be viewed here</td>
+        </tr>
+        <tr>
+            <td>Downloads<br />Grade Sheet(Download)<br />Provisional Certificate</td>
+            <td>Semester Wise Individual Grade Sheets can be viewed<br /> After completion of Program you can download the Provisional Certificate</td>
+        </tr>
+        <tr>
+            <td>Library<br />Library Info. Online Database</td>
+            <td>Rules & Regulations, Borrowing policies, Journals, Magazines, Newspapers, IUP journals etc.,<br />E-Journals (Management / Engineering) Open access to online Databases<br />Global online journals and Periodicals etc.,</td>
+        </tr>
+        <tr>
+            <td>IIC<br />Guidelines<br />News & Events<br />Externship<br />Internship<br />Upload Resume</td>
+            <td><br />Guidelines of IIC<br /> You can view the News & Events happening around<br />(Under Construction)<br />(Under Construction)<br />If you are eligible you can upload the resume</td>
+        </tr>
+        <tr>
+            <td>Change Password</td>
+            <td>Student may change the password of SIS and are required not to share with others</td>
+        </tr>
+    </table>
+
+    <p class="note">**Note:**</p>
+    <p class="note">***Summer Internship Program (SIP) administration, Choice of Electives and process, Online feedback on faculty and Ad hoc surveys for students’ and institutional’ development – links will be activated at appropriate times with prior notice to students through SIS. ***</p>
+    <p class="note">***For any further assistance, students are required to email on <a href="mailto:ssdibshyd@ibsindia.org" class="link">ssdibshyd@ibsindia.org</a> ***</p>
+
+    <p><strong>Best wishes,</strong></p>
+    <p>Associate Dean -Student Services Department (SSD)</p>
+    <p>ICFAI Business School, Hyderabad</p>
+</body>
+</html>
