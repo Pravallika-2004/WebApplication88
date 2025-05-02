@@ -370,8 +370,11 @@
                 </div>
                 <div class="col-span-1">
                     <label class="block font-medium text-sm text-gray-700 mb-1">D.O.B.</label>
-                    <input type="date" class="input-field-custom" value="value=" @(Model.DateOfBirth.HasValue ? Model.DateOfBirth.Value.ToString("dd-MM-yyyy") : "") " readonly  />
+                    <input type="date" class="input-field-custom"
+                           value="@(Model.DateOfBirth.HasValue ? Model.DateOfBirth.Value.ToString("yyyy-MM-dd") : "")"
+                           readonly />
                 </div>
+
                 <div class="col-span-1">
                     <label class="block font-medium text-sm text-gray-700 mb-1">Present Residential Address</label>
                     <textarea class="multiline-custom" required>@Model.PresentResidentialAddress</textarea>
