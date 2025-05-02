@@ -1,289 +1,184 @@
-﻿@model WebApplication8.Models.Healthhistoryform
-@{
+﻿@{
+    ViewBag.Title = "Hostel Rules and Regulations";
     Layout = null;
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFHE Hostel Rules & Regulations 2018</title>
-    <style>
+<style>
+    body {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 16px;
+        background: #fefefe;
+        color: #111;
+    }
+
+    .container {
+        max-width: 860px;
+        margin: auto;
+        background: #fff;
+        padding: 50px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h3 {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    h4 {
+        font-size: 18px;
+        border-bottom: 2px solid #333;
+        margin-top: 30px;
+        padding-bottom: 5px;
+    }
+
+    ol {
+        padding-left: 22px;
+        margin-bottom: 25px;
+    }
+
+    ol > li {
+        margin-bottom: 6px;
+        text-align: justify;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    input.form-control {
+        width: 100%;
+        border: 1px solid #bbb;
+        padding: 6px;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+
+    button.btn-primary {
+        padding: 8px 18px;
+        font-size: 15px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+    }
+
+    .page-break {
+        page-break-before: always;
+    }
+
+    @@media print {
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background: #fff;
+            font-size: 15pt;
         }
 
         .container {
-            display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
+            box-shadow: none;
+            padding: 0;
         }
 
-        .sidebar {
-            width: 250px;
-            background-color: #1a3c6c;
-            color: white;
-            padding: 20px;
-            position: sticky;
-            top: 20px;
-            height: fit-content;
+        button, input {
+            display: none !important;
         }
 
-            .sidebar h2 {
-                font-size: 1.2em;
-                margin-bottom: 20px;
-            }
-
-            .sidebar ul {
-                list-style: none;
-                padding: 0;
-            }
-
-                .sidebar ul li {
-                    margin: 10px 0;
-                }
-
-                    .sidebar ul li a {
-                        color: white;
-                        text-decoration: none;
-                        font-size: 1em;
-                    }
-
-                        .sidebar ul li a:hover {
-                            text-decoration: underline;
-                        }
-
-        .content {
-            flex: 1;
-            background: white;
-            padding: 30px;
-            margin-left: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        h2, h3, h4 {
+            page-break-after: avoid;
         }
 
-            .content h1 {
-                font-size: 1.8em;
-                color: #1a3c6c;
-                margin-bottom: 20px;
-            }
-
-        .accordion {
-            margin-bottom: 20px;
+        .page-break {
+            page-break-before: always;
         }
+    }
+</style>
 
-        .accordion-header {
-            background-color: #e0e7ff;
-            padding: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 5px;
-            margin-bottom: 5px;
-        }
+<div class="container">
+    <h2>Annexure-V</h2>
+    <h3>The ICFAI Foundation for Higher Education (IFHE), Hyderabad</h3>
+    <h3>HOSTEL RULES AND REGULATIONS 2018</h3>
 
-            .accordion-header:hover {
-                background-color: #d1d9ff;
-            }
+    <h4>GENERAL</h4>
+    <ol>
+        <li>These rules provide a safe and conducive environment for students residing in hostels.</li>
+        <li>Hostel Warden/Asst. Warden are responsible for enforcement and administration.</li>
+        <li>Rooms may be opened in case of violation or risk.</li>
+        <li>Expelled students must vacate the hostel immediately after dues clearance.</li>
+        <li>Students are not allowed to bring motor vehicles into the campus.</li>
+        <li>Students with chronic medical issues may be asked to vacate.</li>
+        <li>Stay in the hostel is at the discretion of the University.</li>
+        <li>Day scholars need written permission to enter the hostel.</li>
+    </ol>
 
-        .accordion-content {
-            display: none;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+    <h4>LODGING</h4>
+    <ol start="9">
+        <li>Rooms are allotted by SSD/Warden/Asst. Warden only.</li>
+        <li>Fees must be paid before room occupation.</li>
+        <li>Students cannot change rooms without permission. Personal locks are not allowed.</li>
+        <li>The University may shift rooms for administrative needs.</li>
+        <li>Students are responsible for hostel property; damages are punishable.</li>
+        <li>Leaving hostel requires written permission and intimation to parents.</li>
+        <li>Report water issues and use resources responsibly.</li>
+        <li>Cooking inside rooms is strictly prohibited.</li>
+        <li>Meals must be taken in assigned mess areas. Strict meal timings apply.</li>
+        <li>Approved leave over 48 hours qualifies for mess refund via SIMS.</li>
+        <li>Switch off lights/fans when not in use.</li>
+        <li>No unauthorized electric/electronic items allowed.</li>
+        <li>No loud music or games inside hostels/corridors.</li>
+        <li>No celebrations in rooms. Designated party space available.</li>
+        <li>Do not store cash/valuables in rooms; use campus ATM.</li>
+        <li>Visitors must be verified and approved.</li>
+        <li>No religious or political activities allowed in public/common areas.</li>
+    </ol>
 
-            .accordion-content.active {
-                display: block;
-            }
+    <div class="page-break"></div>
 
-            .accordion-content ol {
-                padding-left: 20px;
-            }
+    <h4>DISCIPLINE</h4>
+    <ol start="27">
+        <li>All complaints must be submitted in writing to the Warden.</li>
+        <li>No tipping allowed to staff/security.</li>
+        <li>Donation collection is prohibited.</li>
+        <li>Notices/meetings require written approval.</li>
+        <li>Smoking, alcohol, and drugs are strictly banned.</li>
+        <li>Weapons, gambling, and banned materials are not permitted. Surprise inspections can occur.</li>
+        <li>Carry university ID at all times. Produce when asked.</li>
+        <li>Biometric swipes at the gate are mandatory for entry/exit.</li>
+        <li>Overnight stays require prior written parental consent and Warden approval.</li>
+        <li>Gate closes at 9 PM. Late entry requires explanation. Hostel doors shut 11 PM to 5 AM.</li>
+        <li>Loitering or being outside hostel after 11 PM is punishable.</li>
+        <li>Exit during class hours requires permission from HOD; otherwise, from Warden.</li>
+        <li>No cross-gender entry to hostels. Strictly prohibited.</li>
+        <li>Maintain silence across all hostel premises.</li>
+        <li>Stay updated with campus notices. Ignorance is not an excuse.</li>
+        <li>Ragging is a punishable offense under law.</li>
+        <li>Report illness, misconduct, or roommate issues to Warden.</li>
+        <li>Repeated violations may lead to expulsion pending enquiry.</li>
+        <li>University decisions are final and binding.</li>
+        <li>Mobile numbers of students and parents must be up-to-date.</li>
+        <li>Rules are subject to change without prior notice.</li>
+        <li>Annexures I–III must be signed and submitted at registration.</li>
+    </ol>
 
-        .download-link {
-            display: inline-block;
-            margin: 20px 0;
-            padding: 10px 20px;
-            background-color: #1a3c6c;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+    <div class="page-break"></div>
 
-        .signature-form {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
+    <h4>I accept the above rules & regulations and confirm to abide by the same.</h4>
 
-            .signature-form label {
-                display: block;
-                margin: 10px 0 5px;
-                font-weight: bold;
-            }
+    <form method="post" asp-action="SubmitAcceptance" class="mt-4">
+        <label>Signature of Parent</label>
+        <input type="text" name="ParentSignature" class="form-control" required />
 
-            .signature-form input, .signature-form select {
-                width: 100%;
-                padding: 8px;
-                margin-bottom: 15px;
-                border: 1px solid #ddd;
-                border-radius: 5px;
-            }
+        <label>Signature of Student</label>
+        <input type="text" name="StudentSignature" class="form-control" required />
 
-            .signature-form button {
-                padding: 10px 20px;
-                background-color: #1a3c6c;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
+        <label>Name</label>
+        <input type="text" name="Name" class="form-control" required />
 
-                .signature-form button:hover {
-                    background-color: #15315a;
-                }
+        <label>Program</label>
+        <input type="text" name="Program" class="form-control" required />
 
-        @@media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
+        <label>Application No.</label>
+        <input type="text" name="ApplicationNo" class="form-control" required />
 
-            .sidebar {
-                width: 100%;
-                position: static;
-            }
-
-            .content {
-                margin-left: 0;
-                margin-top: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="sidebar">
-            <h2>Sections</h2>
-            <ul>
-                <li><a href="#general">General</a></li>
-                <li><a href="#lodging">Lodging</a></li>
-                <li><a href="#discipline">Discipline</a></li>
-                <li><a href="#signature">Acknowledgment</a></li>
-            </ul>
-        </div>
-        <div class="content">
-            <h1>IFHE Hostel Rules & Regulations 2018</h1>
-            <p>The ICFAI Foundation for Higher Education (IFHE), Hyderabad</p>
-
-            <div class="accordion">
-                <div class="accordion-header" id="general">General</div>
-                <div class="accordion-content">
-                    <ol>
-                        <li>These rules provide a safe and conducive environment for students residing in IFHE hostels.</li>
-                        <li>The Hostel Warden/Asst. Warden enforces these rules and manages hostel admissions.</li>
-                        <li>The Warden may break open rooms for violations, suspected unlawful activities, or security risks.</li>
-                        <li>Expelled students must vacate the hostel immediately after clearing dues.</li>
-                        <li>The campus is pedestrian-only; motor vehicles are not permitted.</li>
-                        <li>Students with chronic medical issues may be asked to vacate for personal medical care.</li>
-                        <li>Continuation of stay is at the University’s discretion.</li>
-                        <li>Day scholars need written permission to enter hostels.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <div class="accordion-header" id="lodging">Lodging</div>
-                <div class="accordion-content">
-                    <ol>
-                        <li>Rooms are allotted by SSD/Warden/Assistant Warden.</li>
-                        <li>Hostel and mess fees must be paid at semester registration.</li>
-                        <li>Room changes require Warden’s permission; personal locks are prohibited.</li>
-                        <li>The University may shift students for administrative reasons.</li>
-                        <li>Students are responsible for hostel furniture and fixtures.</li>
-                        <li>Damaging property is punishable; costs are recovered from responsible parties.</li>
-                        <li>Leave requires written permission and parental notification.</li>
-                        <li>Conserve water and report leaks immediately.</li>
-                        <li>Cooking in rooms is not allowed.</li>
-                        <li>Meals must be taken in the assigned mess during prescribed timings.</li>
-                        <li>Mess refunds are available for approved leaves over 48 hours.</li>
-                        <li>Switchregister electricity by switching off fans, lights, etc.</li>
-                        <li>Unauthorized electrical equipment will be confiscated.</li>
-                        <li>Partying in rooms is prohibited; use designated party areas.</li>
-                        <li>Do not keep large cash or valuables; IFHE is not responsible for losses.</li>
-                        <li>Parents/Guardians meet students in the waiting hall with permission.</li>
-                        <li>Anti-national or anti-social activities are prohibited.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <div class="accordion-header" id="discipline">Discipline</div>
-                <div class="accordion-content">
-                    <ol>
-                        <li>Avoid conflicts with staff; lodge complaints in writing.</li>
-                        <li>Do not tip hostel/mess/security staff.</li>
-                        <li>Donations are prohibited.</li>
-                        <li>Notices or meetings require Warden’s permission.</li>
-                        <li>The campus is a no-smoking zone.</li>
-                        <li>Tobacco, alcohol, and drugs are serious misconduct.</li>
-                        <li>Gambling is prohibited.</li>
-                        <li>Rooms are subject to inspection for unauthorized items.</li>
-                        <li>Carry and present ID cards; forged IDs lead to disciplinary action.</li>
-                        <li>Swipe ID cards and register biometrics at the main gate.</li>
-                        <li>Overnight stays require parental permission.</li>
-                        <li>Campus gates close at 2100 hrs; late entry requires explanation.</li>
-                        <li>Males and females cannot enter each other’s hostels.</li>
-                        <li>Maintain silence in hostel premises.</li>
-                        <li>Ragging is strictly prohibited.</li>
-                        <li>Report issues or roommate problems to the Warden.</li>
-                        <li>Misconduct may lead to expulsion.</li>
-                        <li>Update contact details with the University.</li>
-                        <li>Rules may change without notice.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <a href="005_Hostel_Rules_2018.pdf" class="download-link">Download PDF</a>
-
-            <div class="signature-form" id="signature">
-                <h2>Acknowledgment</h2>
-                <p>I accept the above rules & regulations and confirm to abide by the same.</p>
-                <form>
-                    <label for="parent-signature">Parent Signature</label>
-                    <input type="text" id="parent-signature" name="parent-signature" required>
-                    <label for="student-signature">Student Signature</label>
-                    <input type="text" id="student-signature" name="student-signature" required>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="program">Program</label>
-                    <input type="text" id="program" name="program" required>
-                    <label for="app-number">Application No.</label>
-                    <input type="text" id="app-number" name="app-number" required>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Accordion functionality
-        const headers = document.querySelectorAll('.accordion-header');
-        headers.forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                const isActive = content.classList.contains('active');
-                document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
-                if (!isActive) {
-                    content.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+    </form>
+</div>
