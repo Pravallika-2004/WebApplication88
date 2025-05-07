@@ -21,7 +21,7 @@ namespace WebApplication8.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly FEEEntities db = new FEEEntities();
+        private readonly FEEEntities1 db = new FEEEntities1();
 
         // GET: Student Dashboard
         public ActionResult StudentDashboard()
