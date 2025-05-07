@@ -10,6 +10,8 @@ namespace WebApplication8.Models
 
         // Basic Details
         public string name { get; set; }
+        public string Student_Name__as_per_10th_grade_sheet_ { get; set; }
+
         public DateTime? date_of_birth { get; set; }
         public string enrollment_no { get; set; }
         public string mobile_no { get; set; }

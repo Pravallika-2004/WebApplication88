@@ -64,5 +64,6 @@ namespace WebApplication8.Models
         public string Batch { get; set; }
         public string University { get; set; }
         public string History_of_drug_allergy { get; set; }
+        public string Student_Name__as_per_10th_grade_sheet_ { get; set; }
     }
 }

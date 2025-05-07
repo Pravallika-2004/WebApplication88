@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WebApplication8.Models.HostelRules2018
+@{
     ViewBag.Title = "Hostel Rules and Regulations";
     Layout = null;
 }
@@ -6,7 +7,8 @@
 <style>
     body {
         font-family: Georgia, 'Times New Roman', serif;
-        font-size: 16px;
+        font-size: 18px;
+        line-height: 1.6;
         background: #fefefe;
         color: #111;
     }
@@ -26,21 +28,24 @@
     }
 
     h4 {
-        font-size: 18px;
-        border-bottom: 2px solid #333;
+        font-size: 20px;
+        border-bottom: 2px solid #000;
         margin-top: 30px;
         padding-bottom: 5px;
+        page-break-after: avoid;
     }
 
     ol {
         padding-left: 22px;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
+        page-break-inside: avoid;
     }
 
-    ol > li {
-        margin-bottom: 6px;
-        text-align: justify;
-    }
+        ol > li {
+            margin-bottom: 8px;
+            text-align: justify;
+            text-shadow: 0 0 1px rgba(0,0,0,0.3);
+        }
 
     label {
         font-weight: bold;
@@ -54,6 +59,10 @@
         padding: 6px;
         margin-bottom: 15px;
         font-size: 15px;
+    }
+
+    .print-value {
+        display: none;
     }
 
     button.btn-primary {
@@ -72,16 +81,33 @@
     @@media print {
         body {
             background: #fff;
-            font-size: 15pt;
+            font-size: 16pt;
+            color: #000;
         }
 
         .container {
+            max-width: 8.27in;
+            margin: 0.5in;
             box-shadow: none;
             padding: 0;
         }
 
+        h4 {
+            font-size: 18pt;
+        }
+
         button, input {
             display: none !important;
+        }
+
+        label {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .print-value {
+            display: inline;
+            margin-bottom: 15pt;
         }
 
         h2, h3, h4 {
@@ -164,21 +190,14 @@
 
     <h4>I accept the above rules & regulations and confirm to abide by the same.</h4>
 
-    <form method="post" asp-action="SubmitAcceptance" class="mt-4">
-        <label>Signature of Parent</label>
-        <input type="text" name="ParentSignature" class="form-control" required />
+    <div class="mt-4">
+        <p><strong>Signature of Parent:</strong> <span class="underline-field">&nbsp;</span></p>
+        <p><strong>Signature of Student:</strong> <span class="underline-field">&nbsp;</span></p>
+        <div style="margin: 40px 0; font-size: 18px;">
+            <p><strong>Name:</strong> <span class="underline-field">@Model.Name</span></p>
+            <p><strong>Program:</strong> <span class="underline-field">@Model.ProgramName</span></p>
+            <p><strong>Application No.:</strong> <span class="underline-field">@Model.AppNo</span></p>
+        </div>
 
-        <label>Signature of Student</label>
-        <input type="text" name="StudentSignature" class="form-control" required />
-
-        <label>Name</label>
-        <input type="text" name="Name" class="form-control" required />
-
-        <label>Program</label>
-        <input type="text" name="Program" class="form-control" required />
-
-        <label>Application No.</label>
-        <input type="text" name="ApplicationNo" class="form-control" required />
-
-    </form>
+    </div>
 </div>

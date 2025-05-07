@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="FEEModel.HostelFeesTbl" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FEEModel.MessFeesTbl" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FEEModel.PenaltyDetailsTbl" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEEModel.PersonalDetailsTbl" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEEModel.PersonalDetailsTbl" Width="1.5" PointX="6.625" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FEEModel.ProgramTbl" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FEEModel.ReRegistrationDetailsTbl" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FEEModel.SemesterFeesTbl" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />

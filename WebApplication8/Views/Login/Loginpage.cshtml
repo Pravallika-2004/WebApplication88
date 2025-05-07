@@ -149,12 +149,12 @@
         {
             <div class="mb-3">
                 <label class="form-label required">Enrollment No.</label>
-                @Html.TextBoxFor(model => model.EnrollmentId, new { @class = "form-control", required = "required", placeholder = "Enter your enrollment number" })
+                <input type="text" name="EnrollmentId" class="form-control" required placeholder="Enter your enrollment number" />
             </div>
 
             <div class="mb-3">
                 <label class="form-label required">Date of Birth</label>
-                @Html.TextBoxFor(model => model.Dob, new { @class = "form-control", type = "date", required = "required" })
+                <input type="date" name="Dob" class="form-control" required />
             </div>
 
             <div class="d-grid mt-4">

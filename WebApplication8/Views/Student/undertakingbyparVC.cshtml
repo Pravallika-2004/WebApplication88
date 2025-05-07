@@ -7,332 +7,225 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Undertaking Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Undertaking By Parent</title>
     <style>
+        @@page {
+            size: A4;
+            margin: 1.5cm;
+
+            @@bottom-center {
+                content: counter(page);
+                font-size: 10pt;
+            }
+        }
+
         body {
-            font-family: 'Poppins', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #e0f2ff 0%, #f4f7fb 100%);
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.4;
+            color: #000;
             margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            animation: fadeIn 0.8s ease-in-out;
+            padding: 0;
         }
 
         .form-container {
-            width: 85%;
-            margin: 20px auto;
-            background: linear-gradient(145deg, #ffffff, #f0f4ff);
-            padding: 2rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 1rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 21cm;
+            margin: 0 auto;
         }
 
         .annexure {
             text-align: right;
-            font-size: 14px;
-            font-weight: 600;
-            color: #6b7280;
-            margin-bottom: 10px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
         h1 {
             text-align: center;
-            font-size: 24px;
+            font-size: 14pt;
             text-transform: uppercase;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: #004aad;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+            margin: 10px 0;
+            font-weight: bold;
+            text-decoration: underline;
         }
 
         h2 {
-            font-size: 18px;
+            font-size: 12pt;
             text-align: center;
-            text-decoration: underline;
-            margin: 20px 0;
-            font-weight: 600;
-            color: #004aad;
-            padding-top: 0;
-        }
-
-        h3 {
-            font-size: 16px;
-            margin: 20px 0 10px;
-            color: #1f2937;
-            font-weight: 600;
-        }
-
-        p {
-            font-size: 14px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #4b5563;
+            margin: 12px 0;
+            font-weight: bold;
         }
 
         .blank-line {
-            border-bottom: 1px solid #000000;
-            height: 1.5rem;
+            border-bottom: 1px solid #000;
+            min-width: 3.5cm;
             display: inline-block;
-            vertical-align: bottom;
-            width: 100px;
-            margin: 0 5px;
+            height: 16px;
+            margin: 0 0.2cm;
             position: relative;
         }
 
         .blank-line-long {
-            border-bottom: 1px solid #000000;
-            height: 1.5rem;
+            border-bottom: 1px solid #000;
+            min-width: 7cm;
             display: inline-block;
-            vertical-align: bottom;
-            width: 250px;
-            margin: 0 5px;
+            height: 16px;
+            margin: 0 0.2cm;
             position: relative;
         }
 
         .blank-line-textarea {
-            border-bottom: 1px solid #000000;
-            height: 50px;
+            border-bottom: 1px solid #000;
+            width: 100%;
             display: inline-block;
-            vertical-align: top;
-            width: 70%;
-            margin: 0 5px;
+            height: 1.5cm;
+            margin: 5px 0;
             position: relative;
         }
 
         .prefilled-text {
             position: absolute;
-            bottom: 2px;
-            left: 0;
-            font-size: 14px;
-            color: #000000;
+            bottom: 0;
+            left: 0.2cm;
+            font-size: 11pt;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 100%;
+            max-width: 95%;
         }
 
         .guardian-details {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            gap: 20px;
+            margin-bottom: 0.5cm;
         }
 
-        .guardian-info, .parent-details {
-            width: 70%;
-        }
-
-        .guardian-info .form-row,
-        .parent-details .form-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .guardian-info label,
-        .parent-details label {
-            font-size: 14px;
-            width: 200px;
-            margin-right: 10px;
-            color: #1f2937;
-            font-weight: 500;
+        .guardian-info {
+            flex: 3;
         }
 
         .photo-boxes {
-            width: 25%;
+            flex: 1;
+            margin-left: 0.5cm;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 0.3cm;
         }
 
         .photo-row {
             display: flex;
-            gap: 15px;
+            gap: 0.3cm;
         }
 
         .photo-box {
-            border: 1px solid #4b5563;
-            height: 150px;
+            border: 1px solid #000;
+            height: 48mm;
+            width: 40mm;
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 10pt;
             text-align: center;
-            font-size: 12px;
-            padding: 5px;
-            background: #f9fafb;
-            border-radius: 5px;
-            color: #6b7280;
-            flex: 1;
+            page-break-inside: avoid;
         }
 
-        .photo-box-local-guardian {
-            border: 1px solid #4b5563;
-            height: 168px;
+        .photo-box-local {
+            border: 1px solid #000;
+            height: 48mm;
+            width: 40mm;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 10pt;
             text-align: center;
-            font-size: 12px;
-            padding: 5px;
-            background: #f9fafb;
-            border-radius: 5px;
-            color: #6b7280;
-            width: 54%;
+            page-break-inside: avoid;
         }
+
+        .form-row {
+            margin-bottom: 0.3cm;
+            display: flex;
+            align-items: flex-end;
+            page-break-inside: avoid;
+        }
+
+            .form-row label {
+                min-width: 4cm;
+                font-size: 11pt;
+            }
 
         ul {
-            font-size: 14px;
-            margin: 0;
-            padding-left: 20px;
-            color: #4b5563;
-            list-style-type: disc; /* Changed to dotted bullets */
+            margin: 0.3cm 0;
+            padding-left: 1cm;
         }
 
         li {
-            margin-bottom: 10px;
-            
+            margin-bottom: 0.2cm;
+            font-size: 11pt;
         }
 
-        @@keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        p {
+            margin: 0.3cm 0;
+            text-align: justify;
         }
 
-        @@media (max-width: 640px) {
+        @@media print {
+            body {
+                padding: 0;
+            }
+
             .form-container {
-                width: 90%;
-                padding: 1.5rem;
-                border-radius: 0.75rem;
+                padding: 0;
             }
 
-            h1 {
-                font-size: 20px;
-            }
-
-            h2 {
-                font-size: 16px;
-            }
-
-            h3 {
-                font-size: 14px;
-            }
-
-            p, .guardian-info label, .parent-details label, ul {
-                font-size: 12px;
-            }
-
-            .blank-line, .blank-line-long, .blank-line-textarea {
-                width: 100% !important;
-                margin: 5px 0;
-            }
-
-            .prefilled-text {
-                font-size: 12px;
-            }
-
-            .guardian-details {
-                flex-direction: column;
-            }
-
-            .guardian-info, .photo-boxes {
-                width: 100%;
-            }
-
-            .photo-box, .photo-box-local-guardian {
-                height: 120px;
-            }
-
-            .photo-row {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .photo-box {
-                width: 100%;
+            .no-print {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <div class="annexure">Annexure- V (C)</div>
+        <div class="annexure">Annexure-V (C)</div>
         <h1>UNDERTAKING BY PARENT</h1>
         <h2>(FOR HOSTEL RESIDENTS ONLY)</h2>
 
         <p>
-            I/We,
-            <span class="blank-line-long">
-                <span class="prefilled-text">@Model.ParentName</span>
-            </span>
-            F/o, M/o,
-            <span class="blank-line-long">
-                <span class="prefilled-text">@Model.StudentName</span>
-            </span>,
-            who is studying in Program
-            <span class="blank-line">
-                <span class="prefilled-text">@Model.Program</span>
-            </span>
-            Branch
-            <span class="blank-line">
-                <span class="prefilled-text">@Model.Branch</span>
-            </span>
-            Year
-            <span class="blank-line">
-                <span class="prefilled-text">@Model.Year</span>
-            </span>
-            and residing in Hostel in Room No.
-            <span class="blank-line">
-                <span class="prefilled-text">@Model.RoomNo</span>
-            </span>
-            have read and understood the Rules and Regulations and I/We will cooperate with the Hostel Authorities and will also provide all information, if any, of my ward to the Hostel Authorities.
-            I will be available on call and take care of my ward, as and when required. The details of Local Guardian/Visitor(s) (if any) are as follow:
+            I/We <span class="blank-line-long"><span class="prefilled-text">@Model.ParentName</span></span> F/o, M/o
+            <span class="blank-line-long"><span class="prefilled-text">@Model.StudentName</span></span> who is studying in Program
+            <span class="blank-line"><span class="prefilled-text">@Model.Program</span></span> and residing in Hostel in Room No.
+            <span class="blank-line"><span class="prefilled-text">@Model.RoomNo</span></span> I/We will cooperate with the Hostel Authorities
+            and the Hostel Authorities. I will be available on call and take care of my ward, as and when required. The details of Local Guardian/Visitors (if any) are as follow:
         </p>
 
-        <h2>Details of Local Guardian /Visitor(s)</h2>
+        <p>
+            F/o, M/o, <span class="blank-line"><span class="prefilled-text">@Model.StudentName</span></span> Branch
+            <span class="blank-line"><span class="prefilled-text">@Model.Branch</span></span> have read and understood the Rules and Regulations
+            and information, if any, of my ward to provide all information, as and when required. The details of my ward, as and when required.
+        </p>
+
+        <h2>Details of Local Guardian / Visitor(s)</h2>
 
         <div class="guardian-details">
             <div class="guardian-info">
                 <div class="form-row">
                     <label>Name of Local Guardian</label>
-                    <span class="blank-line-long">
-                        <span class="prefilled-text">@Model.LocalGuardianName</span>
-                    </span>
+                    <span class="blank-line-long"><span class="prefilled-text">@Model.LocalGuardianName</span></span>
                 </div>
                 <div class="form-row">
                     <label>Relation with the student</label>
-                    <span class="blank-line-long">
-                        <span class="prefilled-text">@Model.LocalGuardianRelation</span>
-                    </span>
+                    <span class="blank-line-long"><span class="prefilled-text">@Model.LocalGuardianRelation</span></span>
                 </div>
                 <div class="form-row">
                     <label>Occupation</label>
-                    <span class="blank-line-long">
-                        <span class="prefilled-text">@Model.LocalGuardianOccupation</span>
-                    </span>
+                    <span class="blank-line-long"><span class="prefilled-text">@Model.LocalGuardianOccupation</span></span>
                 </div>
                 <div class="form-row">
                     <label>Permanent Address</label>
-                    <span class="blank-line-textarea">
-                        <span class="prefilled-text">@Model.LocalGuardianAddress</span>
-                    </span>
+                    <span class="blank-line-textarea"><span class="prefilled-text">@Model.LocalGuardianAddress</span></span>
                 </div>
                 <div class="form-row">
                     <label>Phone No. (Landline/Mobile)</label>
-                    <span class="blank-line-long">
-                        <span class="prefilled-text">@Model.LocalGuardianPhone</span>
-                    </span>
+                    <span class="blank-line-long"><span class="prefilled-text">@Model.LocalGuardianPhone</span></span>
                 </div>
             </div>
 
@@ -341,43 +234,33 @@
                     <div class="photo-box">Photo ID of father self-attested</div>
                     <div class="photo-box">Photo ID of mother self-attested</div>
                 </div>
-                <div class="photo-box-local-guardian">Photo ID proof of Local Guardian duly attested by Parent</div>
+                <div class="photo-box-local">Photo ID proof of Local Guardian attested by Parent</div>
             </div>
         </div>
 
         <p>
-            I hereby undertake that myself and my ward are duly bound to follow the norms of IFHE, Hyderabad, Student Conduct and Discipline Rules, 2018 and Hostel Rules and Regulations 2018 while inside/outside the campus.
+            I hereby undertake that myself and my ward are duly bound to follow the norms of IFIIE, Hyderal Student Conduct and Discipline Rules, 2018 and Hostel Rules and Regulations 2018 while inside/outside campus.
         </p>
 
-        <div class="parent-details">
-            <div class="form-row">
-                <label>Name of Parent</label>
-                <span class="blank-line-long">
-                    <span class="prefilled-text">@Model.ParentName</span>
-                </span>
-            </div>
-            <div class="form-row">
-                <label>Signature</label>
-                <span class="blank-line-long"></span>
-            </div>
-            <div class="form-row">
-                <label>Email ID</label>
-                <span class="blank-line-long">
-                    <span class="prefilled-text">@Model.ParentEmail</span>
-                </span>
-            </div>
-            <div class="form-row">
-                <label>Mobile No</label>
-                <span class="blank-line-long">
-                    <span class="prefilled-text">@Model.ParentMobile</span>
-                </span>
-            </div>
-            <div class="form-row">
-                <label>Date</label>
-                <span class="blank-line-long">
-                    <span class="prefilled-text">@Model.Date</span>
-                </span>
-            </div>
+        <div class="form-row">
+            <label>Name of Parent</label>
+            <span class="blank-line-long"><span class="prefilled-text">@Model.ParentName</span></span>
+        </div>
+        <div class="form-row">
+            <label>Signature</label>
+            <span class="blank-line-long"></span>
+        </div>
+        <div class="form-row">
+            <label>Email ID</label>
+            <span class="blank-line-long"><span class="prefilled-text">@Model.ParentEmail</span></span>
+        </div>
+        <div class="form-row">
+            <label>Mobile No</label>
+            <span class="blank-line-long"><span class="prefilled-text">@Model.ParentMobile</span></span>
+        </div>
+        <div class="form-row">
+            <label>Date</label>
+            <span class="blank-line-long"><span class="prefilled-text">@Model.Date</span></span>
         </div>
 
         <h3>Enclose:</h3>

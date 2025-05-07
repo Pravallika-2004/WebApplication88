@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FEEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FEEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BridgLoanTbl">
           <Key>
             <PropertyRef Name="Id" />
@@ -154,6 +154,7 @@
           <Property Name="Batch" Type="varchar" MaxLength="40" />
           <Property Name="University" Type="varchar" MaxLength="50" />
           <Property Name="History_of_drug_allergy" Type="text" />
+          <Property Name="Student Name (as per 10th grade sheet)" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ProgramTbl">
           <Key>
@@ -338,8 +339,7 @@
           <EntitySet Name="TblLogin" EntityType="Self.TblLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransportTbl" EntityType="Self.TransportTbl" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FEEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -492,6 +492,7 @@
           <Property Name="Batch" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="University" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="History_of_drug_allergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Student_Name__as_per_10th_grade_sheet_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ProgramTbl">
           <Key>
@@ -786,6 +787,7 @@
           <EntitySetMapping Name="PersonalDetailsTbls">
             <EntityTypeMapping TypeName="FEEModel.PersonalDetailsTbl">
               <MappingFragment StoreEntitySet="PersonalDetailsTbl">
+                <ScalarProperty Name="Student_Name__as_per_10th_grade_sheet_" ColumnName="Student Name (as per 10th grade sheet)" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AdmitCardNo" ColumnName="AdmitCardNo" />
                 <ScalarProperty Name="EnrollmentNo" ColumnName="EnrollmentNo" />

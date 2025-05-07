@@ -6,7 +6,10 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+
+
 namespace WebApplication8
+   
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -16,6 +19,8 @@ namespace WebApplication8
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            
         }
     }
 }
