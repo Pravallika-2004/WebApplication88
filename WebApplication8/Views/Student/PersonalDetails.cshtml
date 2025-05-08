@@ -118,6 +118,16 @@
             accent-color: #dc3545;
         }
 
+        .same-address-checkbox {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .same-address-checkbox input {
+            margin-right: 5px;
+        }
+
         .health-history-item {
             display: flex;
             align-items: center;
@@ -201,6 +211,12 @@
             max-width: 24%;
         }
 
+        .col-md-6 {
+            flex: 1;
+            min-width: 300px;
+            max-width: 49%;
+        }
+
         .invalid-feedback {
             display: none;
             color: #dc3545;
@@ -208,18 +224,18 @@
             margin-top: 5px;
         }
 
-        .form-control:invalid,
-        .form-select:invalid {
+        .form-control.is-invalid,
+        .form-select.is-invalid {
             border-color: #dc3545;
         }
 
-        .form-control:invalid:focus,
-        .form-select:invalid:focus {
+        .form-control.is-invalid:focus,
+        .form-select.is-invalid:focus {
             box-shadow: 0 0 10px rgba(220, 53, 69, 0.2);
         }
 
-        .form-control:invalid ~ .invalid-feedback,
-        .form-select:invalid ~ .invalid-feedback {
+        .form-control.is-invalid ~ .invalid-feedback,
+        .form-select.is-invalid ~ .invalid-feedback {
             display: block;
         }
 
@@ -246,7 +262,7 @@
         }
 
         @@media (max-width: 768px) {
-            .col-md-3 {
+            .col-md-3, .col-md-6 {
                 min-width: 100%;
                 max-width: 100%;
             }
@@ -261,7 +277,7 @@
     <div class="container">
         <h2>Student Personal Details</h2>
 
-        @using (Html.BeginForm("SubmitPersonalDetails", "Student", FormMethod.Post, new { @class = "personal-details-form", id = "personalDetailsForm", novalidate = "novalidate" }))
+        @using (Html.BeginForm("SubmitPersonalDetails", "Student", FormMethod.Post, new { @class = "personal-details-form", id = "personalDetailsForm" }))
         {
             @Html.AntiForgeryToken()
 
@@ -270,18 +286,46 @@
                 <div class="card-body">
                     <h3 class="card-title">Student Details</h3>
                     <div class="row">
-                        <!-- Column 1 -->
+                        <!-- Row 1: Basic Identification -->
                         <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.EnrollmentNo, "Enrollment No", new { @class = "form-label" })
                                 @Html.TextBoxFor(m => m.EnrollmentNo, new { @class = "form-control", @readonly = "readonly", required = "required", @Value = Model?.EnrollmentNo ?? "" })
                                 <div class="invalid-feedback">Please provide an Enrollment Number.</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.AdmissionNo, "Admission No", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.AdmissionNo, new { @class = "form-control", required = "required", @Value = Model?.AdmissionNo ?? "" })
+                                <div class="invalid-feedback">Please provide the admission number.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.AdmitCardNo, "Admit Card No", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.AdmitCardNo, new { @class = "form-control", required = "required", @Value = Model?.AdmitCardNo ?? "" })
+                                <div class="invalid-feedback">Please provide the admit card number.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.RegistrationNo, "Registration No", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.RegistrationNo, new { @class = "form-control", required = "required", @Value = Model?.RegistrationNo ?? "" })
+                                <div class="invalid-feedback">Please provide the registration number.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Row 2: Personal Details -->
+                        <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.StudentName, "Student Name", new { @class = "form-label" })
                                 @Html.TextBoxFor(m => m.StudentName, new { @class = "form-control", required = "required", @Value = Model?.StudentName ?? "" })
                                 <div class="invalid-feedback">Please provide the student's name.</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="Student_Name__as_per_10th_grade_sheet_" class="form-label">
                                     Student Name <span class="text-muted">(as per 10th grade sheet)</span>
@@ -290,48 +334,15 @@
                                        value="@(Model?.Student_Name__as_per_10th_grade_sheet_ ?? "")" placeholder="Enter name from 10th grade certificate" required />
                                 <div class="invalid-feedback">Please provide the student's name as per the 10th grade certificate.</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Gender, new { @class = "form-label" })
                                 @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "Male", "Female", "Other" }, Model?.Gender), "-- Select Gender --", new { @class = "form-select", required = "required" })
                                 <div class="invalid-feedback">Please select a gender.</div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.StudentEmail, "Student Email", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.StudentEmail, new { @class = "form-control", type = "email", required = "required", @Value = Model?.StudentEmail ?? "", pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" })
-                                <div class="invalid-feedback">Please provide a valid email address.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.PresentResidentialAddress, "Present Residential Address", new { @class = "form-label" })
-                                @Html.TextAreaFor(m => m.PresentResidentialAddress, new { @class = "form-control", rows = "4", required = "required", @Value = Model?.PresentResidentialAddress ?? "" })
-                                <div class="invalid-feedback">Please provide the present residential address.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.StudentAddress_Communication, "Student Address Communication", new { @class = "form-label" })
-                                @Html.TextAreaFor(m => m.StudentAddress_Communication, new { @class = "form-control", rows = "4", required = "required", @Value = Model?.StudentAddress_Communication ?? "" })
-                                <div class="invalid-feedback">Please provide the communication address.</div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Allergy Names</label>
-                                <div class="checkbox-group" id="allergyNamesGroup">
-                                    @foreach (var allergy in new[] { "substance allergy", "drug allergy" })
-                                    {
-                                        <div>
-                                            <input type="checkbox" name="AllergyNames" value="@allergy" @(Model != null && Model.AllergyNames != null && Model.AllergyNames.Contains(allergy) ? "checked" : "") class="allergy-checkbox" />
-                                            <label>@allergy</label>
-                                        </div>
-                                    }
-                                </div>
-                                <div class="invalid-feedback" id="allergyNamesError">Please select at least one allergy type.</div>
-                            </div>
                         </div>
-
-                        <!-- Column 2 -->
                         <div class="col-md-3">
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.StudentContactNo, "Student Contact No", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.StudentContactNo, new { @class = "form-control", required = "required", @Value = Model?.StudentContactNo ?? "", pattern = @"^\d{10}$", title = "Contact number must be exactly 10 digits." })
-                                <div class="invalid-feedback">Please provide a valid 10-digit contact number.</div>
-                            </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.DateOfBirth, "DOB", new { @class = "form-label" })
                                 @Html.TextBoxFor(m => m.DateOfBirth, new
@@ -345,16 +356,87 @@
                                 })
                                 <div class="invalid-feedback">Please provide a valid date of birth (not in the future).</div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Row 3: Contact Details -->
+                        <div class="col-md-3">
                             <div class="form-group">
-                                @Html.LabelFor(m => m.AdmitCardNo, "Admit Card No", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.AdmitCardNo, new { @class = "form-control", required = "required", @Value = Model?.AdmitCardNo ?? "" })
-                                <div class="invalid-feedback">Please provide the admit card number.</div>
+                                @Html.LabelFor(m => m.StudentEmail, "Student Email", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StudentEmail, new { @class = "form-control", type = "email", required = "required", @Value = Model?.StudentEmail ?? "", pattern = @"^[a-zA-Z0-9._%+-]+@gmail\.com$" })
+                                <div class="invalid-feedback">Please provide a valid Gmail address (e.g., username@gmail.com).</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
-                                @Html.LabelFor(m => m.AdmissionNo, "Admission No", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.AdmissionNo, new { @class = "form-control", required = "required", @Value = Model?.AdmissionNo ?? "" })
-                                <div class="invalid-feedback">Please provide the admission number.</div>
+                                @Html.LabelFor(m => m.StudentContactNo, "Student Contact No", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StudentContactNo, new { @class = "form-control", required = "required", @Value = Model?.StudentContactNo ?? "", pattern = @"^\d{10}$", title = "Contact number must be exactly 10 digits." })
+                                <div class="invalid-feedback">Please provide a valid 10-digit contact number.</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.stu_whatsappnum, "Student WhatsApp No", new { @class = "form-label", @title = "Student WhatsApp Number" })
+                                @Html.TextBoxFor(m => m.stu_whatsappnum, new { @class = "form-control", required = "required", @Value = Model?.stu_whatsappnum ?? "", pattern = @"^\d{10}$", title = "WhatsApp number must be exactly 10 digits." })
+                                <div class="invalid-feedback">Please provide a valid 10-digit WhatsApp number.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.RoomNo, "Room No", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.RoomNo, new { @class = "form-control", required = "required", @Value = Model?.RoomNo ?? "" })
+                                <div class="invalid-feedback">Please provide the room number.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Row 4: Academic Details -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Program, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Program, new { @class = "form-control", @readonly = "readonly", required = "required", @Value = Model?.Program ?? "" })
+                                <div class="invalid-feedback">Please provide the program name.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Branch, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Branch, new { @class = "form-control", required = "required", @Value = Model?.Branch ?? "" })
+                                <div class="invalid-feedback">Please provide the branch.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Year, "Year", new { @class = "form-label" })
+                                @Html.DropDownListFor(m => m.Year, new SelectList(new[] { "1", "2", "3", "4" }, Model?.Year), "-- Select Year --", new { @class = "form-control", required = "required" })
+                                <div class="invalid-feedback">Please select the year.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.AdmissionYear, "Admission Year", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.AdmissionYear, new { @class = "form-control", type = "number", required = "required", @Value = Model?.AdmissionYear ?? 2025, min = "2000", max = "2025" })
+                                <div class="invalid-feedback">Please provide a valid admission year (2000-2025).</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Row 5: Additional Academic -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.University, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.University, new { @class = "form-control", required = "required", @Value = Model?.University ?? "" })
+                                <div class="invalid-feedback">Please provide the university name.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Batch, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Batch, new { @class = "form-control", required = "required", @Value = Model?.Batch ?? "" })
+                                <div class="invalid-feedback">Please provide the batch.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Nationality, new { @class = "form-label" })
                                 @Html.DropDownListFor(m => m.Nationality, new SelectList(new List<string>
@@ -367,97 +449,18 @@
                                 }, Model?.Nationality), "-- Select Nationality --", new { @class = "form-control", required = "required" })
                                 <div class="invalid-feedback">Please select a nationality.</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Caste, new { @class = "form-label" })
                                 @Html.TextBoxFor(m => m.Caste, new { @class = "form-control", required = "required", @Value = Model?.Caste ?? "" })
                                 <div class="invalid-feedback">Please provide the caste.</div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.AadharNumber, "Aadhar Number", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.AadharNumber, new { @class = "form-control", required = "required", @Value = Model?.AadharNumber ?? "", pattern = @"^\d{12}$", title = "Aadhar number must be exactly 12 digits." })
-                                <div class="invalid-feedback">Please provide a valid 12-digit Aadhar number.</div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Past Health History</label>
-                                <div id="healthHistoryContainer" class="mb-2">
-                                    @if (!string.IsNullOrEmpty(Model?.Past_Health_History))
-                                    {
-                                        var conditions = Model.Past_Health_History.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                                        foreach (var condition in conditions)
-                                        {
-                                            <div class="health-history-item">
-                                                <input type="text" name="Past_Health_History[]" class="form-control health-history-input" value="@condition" required />
-                                                <button type="button" class="btn btn-danger btn-sm remove-health">Remove</button>
-                                            </div>
-                                        }
-                                    }
-                                </div>
-                                <button type="button" id="addHealthHistory" class="btn btn-primary btn-sm mt-1 mb-2">Add New</button>
-                                <div class="invalid-feedback" id="healthHistoryError">Please add at least one past health history entry.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.History_Of_Substance_Allergy, "History of Substance Allergy", new { @class = "form-label" })
-                                @Html.TextAreaFor(m => m.History_Of_Substance_Allergy, new { @class = "form-control", rows = "3", required = "required", @Value = Model?.History_Of_Substance_Allergy ?? "" })
-                                <div class="invalid-feedback">Please provide details of substance allergy history.</div>
-                            </div>
                         </div>
-
-                        <!-- Column 3 -->
+                    </div>
+                    <div class="row">
+                        <!-- Row 6: Physical Attributes -->
                         <div class="col-md-3">
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.RegistrationNo, "Registration No", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.RegistrationNo, new { @class = "form-control", required = "required", @Value = Model?.RegistrationNo ?? "" })
-                                <div class="invalid-feedback">Please provide the registration number.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.AdmissionYear, "Admission Year", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.AdmissionYear, new { @class = "form-control", type = "number", required = "required", @Value = Model?.AdmissionYear ?? 2025, min = "2000", max = "2025" })
-                                <div class="invalid-feedback">Please provide a valid admission year (2000-2025).</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.Program, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.Program, new { @class = "form-control", @readonly = "readonly", required = "required", @Value = Model?.Program ?? "" })
-                                <div class="invalid-feedback">Please provide the program name.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.Branch, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.Branch, new { @class = "form-control", required = "required", @Value = Model?.Branch ?? "" })
-                                <div class="invalid-feedback">Please provide the branch.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.Year, "Year", new { @class = "form-label" })
-                                @Html.DropDownListFor(m => m.Year, new SelectList(new[] { "1", "2", "3", "4" }, Model?.Year), "-- Select Year --", new { @class = "form-control", required = "required" })
-                                <div class="invalid-feedback">Please select the year.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.stu_whatsappnum, "Student WhatsApp No", new { @class = "form-label", @title = "Student WhatsApp Number" })
-                                @Html.TextBoxFor(m => m.stu_whatsappnum, new { @class = "form-control", required = "required", @Value = Model?.stu_whatsappnum ?? "", pattern = @"^\d{10}$", title = "WhatsApp number must be exactly 10 digits." })
-                                <div class="invalid-feedback">Please provide a valid 10-digit WhatsApp number.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.University, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.University, new { @class = "form-control", required = "required", @Value = Model?.University ?? "" })
-                                <div class="invalid-feedback">Please provide the university name.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.Details_Of_Past_Health_History, "Details Of Past Health History", new { @class = "form-label" })
-                                @Html.TextAreaFor(m => m.Details_Of_Past_Health_History, new { @class = "form-control", rows = "3", required = "required", @Value = Model?.Details_Of_Past_Health_History ?? "" })
-                                <div class="invalid-feedback">Please provide details of past health history.</div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.History_of_drug_allergy, "History of Drug Allergy", new { @class = "form-label" })
-                                @Html.TextAreaFor(m => m.History_of_drug_allergy, new { @class = "form-control", rows = "3", required = "required", @Value = Model?.History_of_drug_allergy ?? "" })
-                                <div class="invalid-feedback">Please provide details of drug allergy history.</div>
-                            </div>
-                        </div>
-
-                        <!-- Column 4 -->
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.RoomNo, "Room No", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.RoomNo, new { @class = "form-control", required = "required", @Value = Model?.RoomNo ?? "" })
-                                <div class="invalid-feedback">Please provide the room number.</div>
-                            </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Age, new { @class = "form-label" })
                                 @Html.TextBoxFor(m => m.Age, new
@@ -473,16 +476,32 @@
                                 })
                                 <div class="invalid-feedback">Age must be between 1 and 100.</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Height, new { @class = "form-label" })
                                 @Html.DropDownListFor(m => m.Height, new SelectList(GenerateHeightOptions(), "Value", "Text", Model?.Height), "-- Select Height --", new { @class = "form-control", required = "required" })
                                 <div class="invalid-feedback">Please select the height.</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Weight, new { @class = "form-label" })
                                 @Html.DropDownListFor(m => m.Weight, new SelectList(GenerateWeightOptions(), "Value", "Text", Model?.Weight), "-- Select Weight --", new { @class = "form-control", required = "required" })
                                 <div class="invalid-feedback">Please select the weight.</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.BloodGroup, "Blood Group", new { @class = "form-label" })
+                                @Html.DropDownListFor(m => m.BloodGroup, new SelectList(new[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" }, Model?.BloodGroup), "-- Select Blood Group --", new { @class = "form-select", required = "required" })
+                                <div class="invalid-feedback">Please select a blood group.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Row 7: Other Details -->
+                        <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Religion, new { @class = "form-label" })
                                 @Html.DropDownListFor(m => m.Religion, new SelectList(new List<string>
@@ -493,16 +512,15 @@
                                 }, Model?.Religion), "-- Select Religion --", new { @class = "form-control", required = "required" })
                                 <div class="invalid-feedback">Please select a religion.</div>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
-                                @Html.LabelFor(m => m.BloodGroup, "Blood Group", new { @class = "form-label" })
-                                @Html.DropDownListFor(m => m.BloodGroup, new SelectList(new[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" }, Model?.BloodGroup), "-- Select Blood Group --", new { @class = "form-select", required = "required" })
-                                <div class="invalid-feedback">Please select a blood group.</div>
+                                @Html.LabelFor(m => m.AadharNumber, "Aadhar Number", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.AadharNumber, new { @class = "form-control", required = "required", @Value = Model?.AadharNumber ?? "", pattern = @"^\d{12}$", title = "Aadhar number must be exactly 12 digits." })
+                                <div class="invalid-feedback">Please provide a valid 12-digit Aadhar number.</div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.Batch, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.Batch, new { @class = "form-control", required = "required", @Value = Model?.Batch ?? "" })
-                                <div class="invalid-feedback">Please provide the batch.</div>
-                            </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label class="form-label">Work Experience</label>
                                 <div class="checkbox-group" id="workExperienceGroup">
@@ -515,6 +533,140 @@
                                     }
                                 </div>
                                 <div class="invalid-feedback" id="workExperienceError">Please select at least one work experience option.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Empty column to maintain layout -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Row 8: Residential Address -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.PresentResidentialAddress, "Present Residential Address", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.PresentResidentialAddress, new { @class = "form-control", required = "required", @Value = Model?.PresentResidentialAddress ?? "", id = "PresentResidentialAddress" })
+                                <div class="invalid-feedback">Please provide the present residential address.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ResidentialAddress_State, "State", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.ResidentialAddress_State, new { @class = "form-control", required = "required", @Value = Model?.ResidentialAddress_State ?? "", id = "ResidentialAddress_State" })
+                                <div class="invalid-feedback">Please provide the state.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ResidentialAddress_City, "City", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.ResidentialAddress_City, new { @class = "form-control", required = "required", @Value = Model?.ResidentialAddress_City ?? "", id = "ResidentialAddress_City" })
+                                <div class="invalid-feedback">Please provide the city.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ResidentialAddress_Pincode, "Pincode", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.ResidentialAddress_Pincode, new { @class = "form-control", required = "required", @Value = Model?.ResidentialAddress_Pincode ?? "", pattern = @"^\d{6}$", title = "Pincode must be exactly 6 digits.", id = "ResidentialAddress_Pincode" })
+                                <div class="invalid-feedback">Please provide a valid 6-digit pincode.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="same-address-checkbox">
+                                <input type="checkbox" id="sameAddressCheckbox" @(Model != null && Model.StudentAddress_Communication == Model.PresentResidentialAddress && Model.StudentAddress_Communication_State == Model.ResidentialAddress_State && Model.StudentAddress_Communication_City == Model.ResidentialAddress_City && Model.StudentAddress_Communication_Pincode == Model.ResidentialAddress_Pincode ? "checked" : "") />
+                                <label for="sameAddressCheckbox">Same as Residential Address</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Row 9: Communication Address -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StudentAddress_Communication, "Student Address Communication", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StudentAddress_Communication, new { @class = "form-control", required = "required", @Value = Model?.StudentAddress_Communication ?? "", id = "StudentAddress_Communication" })
+                                <div class="invalid-feedback">Please provide the communication address.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StudentAddress_Communication_State, "State", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StudentAddress_Communication_State, new { @class = "form-control", required = "required", @Value = Model?.StudentAddress_Communication_State ?? "", id = "StudentAddress_Communication_State" })
+                                <div class="invalid-feedback">Please provide the state.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StudentAddress_Communication_City, "City", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StudentAddress_Communication_City, new { @class = "form-control", required = "required", @Value = Model?.StudentAddress_Communication_City ?? "", id = "StudentAddress_Communication_City" })
+                                <div class="invalid-feedback">Please provide the city.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StudentAddress_Communication_Pincode, "Pincode", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StudentAddress_Communication_Pincode, new { @class = "form-control", required = "required", @Value = Model?.StudentAddress_Communication_Pincode ?? "", pattern = @"^\d{6}$", title = "Pincode must be exactly 6 digits.", id = "StudentAddress_Communication_Pincode" })
+                                <div class="invalid-feedback">Please provide a valid 6-digit pincode.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Health Details Card -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Student Health Details</h3>
+                    <div class="row">
+                        <!-- Column 1 -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Past Health History</label>
+                                <div id="healthHistoryContainer" class="mb-2">
+                                    @if (!string.IsNullOrEmpty(Model?.Past_Health_History))
+                                    {
+                                        var conditions = Model.Past_Health_History.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                                        foreach (var condition in conditions)
+                                        {
+                                            <div class="health-history-item">
+                                                <input type="text" name="Past_Health_History[]" class="form-control health-history-input" value="@condition" />
+                                                <button type="button" class="btn btn-danger btn-sm remove-health">Remove</button>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <button type="button" id="addHealthHistory" class="btn btn-primary btn-sm mt-1 mb-2">Add New</button>
+                                <div class="invalid-feedback" id="healthHistoryError">Please add at least one past health history entry if you wish to include health history.</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Allergy Names</label>
+                                <div class="checkbox-group" id="allergyNamesGroup">
+                                    @foreach (var allergy in new[] { "substance allergy", "drug allergy" })
+                                    {
+                                        <div>
+                                            <input type="checkbox" name="AllergyNames" value="@allergy" @(Model != null && Model.AllergyNames != null && Model.AllergyNames.Contains(allergy) ? "checked" : "") class="allergy-checkbox" />
+                                            <label>@allergy</label>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="invalid-feedback" id="allergyNamesError">Please select at least one allergy type if you wish to include allergies.</div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.History_Of_Substance_Allergy, "History of Substance Allergy", new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.History_Of_Substance_Allergy, new { @class = "form-control", rows = "3", @Value = Model?.History_Of_Substance_Allergy ?? "" })
+                                <div class="invalid-feedback">Please provide details of substance allergy history if applicable.</div>
+                            </div>
+                        </div>
+                        <!-- Column 2 -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Details_Of_Past_Health_History, "Details Of Past Health History", new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.Details_Of_Past_Health_History, new { @class = "form-control", rows = "3", @Value = Model?.Details_Of_Past_Health_History ?? "" })
+                                <div class="invalid-feedback">Please provide details of past health history if applicable.</div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.History_of_drug_allergy, "History of Drug Allergy", new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.History_of_drug_allergy, new { @class = "form-control", rows = "3", @Value = Model?.History_of_drug_allergy ?? "" })
+                                <div class="invalid-feedback">Please provide details of drug allergy history if applicable.</div>
                             </div>
                         </div>
                     </div>
@@ -530,12 +682,12 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.FathersName, "Father Name", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.FathersName, new { @class = "form-control", @readonly = "readonly", required = "required", @Value = Model?.FathersName ?? "" })
+                                @Html.TextBoxFor(m => m.FathersName, new { @class = "form-control", required = "required", @Value = Model?.FathersName ?? "" })
                                 <div class="invalid-feedback">Please provide the father's name.</div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.MothersName, "Mother Name", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.MothersName, new { @class = "form-control", @readonly = "readonly", required = "required", @Value = Model?.MothersName ?? "" })
+                                @Html.TextBoxFor(m => m.MothersName, new { @class = "form-control",  required = "required", @Value = Model?.MothersName ?? "" })
                                 <div class="invalid-feedback">Please provide the mother's name.</div>
                             </div>
                             <div class="form-group">
@@ -552,7 +704,6 @@
                                 <div class="invalid-feedback" id="parentsIncomeError">Please select at least one income category.</div>
                             </div>
                         </div>
-
                         <!-- Column 2 -->
                         <div class="col-md-3">
                             <div class="form-group">
@@ -566,28 +717,31 @@
                                 <div class="invalid-feedback">Please provide a valid 10-digit mobile number for the mother.</div>
                             </div>
                         </div>
-
                         <!-- Column 3 -->
                         <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.FathersEmail, "Father's Email", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.FathersEmail, new { @class = "form-control", type = "email", required = "required", @Value = Model?.FathersEmail ?? "", pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" })
-                                <div class="invalid-feedback">Please provide a valid email address for the father.</div>
+                                @Html.TextBoxFor(m => m.FathersEmail, new { @class = "form-control", type = "email", required = "required", @Value = Model?.FathersEmail ?? "", pattern = @"^[a-zA-Z0-9._%+-]+@gmail\.com$" })
+                                <div class="invalid-feedback">Please provide a valid Gmail address for the father (e.g., username@gmail.com).</div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.MothersEmail, "Mother's Email", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.MothersEmail, new { @class = "form-control", type = "email", required = "required", @Value = Model?.MothersEmail ?? "", pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" })
-                                <div class="invalid-feedback">Please provide a valid email address for the mother.</div>
+                                @Html.TextBoxFor(m => m.MothersEmail, new { @class = "form-control", type = "email", required = "required", @Value = Model?.MothersEmail ?? "", pattern = @"^[a-zA-Z0-9._%+-]+@gmail\.com$" })
+                                <div class="invalid-feedback">Please provide a valid Gmail address for the mother (e.g., username@gmail.com).</div>
                             </div>
                         </div>
-
                         <!-- Column 4 -->
                         <div class="col-md-3">
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.Father_Age, "Father's Age", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.Father_Age, new { @class = "form-control", type = "number", required = "required", @Value = Model?.Father_Age ?? 0, min = "18", max = "100" })
-                                <div class="invalid-feedback">Please provide a valid age for the father (18-100).</div>
-                            </div>
+                            @* <div class="form-group">
+                                     @Html.LabelFor(m => m.Father_Age, "Father's Age", new { @class = "form-label" })
+                                     @Html.TextBoxFor(m => m.Father_Age, new
+                                {
+                                    @class = "form-control",
+                                    type = "number",
+                                    required = "required",
+                            *@<!--Value @@linkto://x.com/user/xAI/status/1986 = Model?.Father_Age ?? 0, min = "18", max = "100" })*/-->
+                            @*<div class="invalid-feedback">Please provide a valid age for the father (18-100).</div>
+                                </div>*@
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Mother_Age, "Mother's Age", new { @class = "form-label" })
                                 @Html.TextBoxFor(m => m.Mother_Age, new { @class = "form-control", type = "number", required = "required", @Value = Model?.Mother_Age ?? 0, min = "18", max = "100" })
@@ -616,7 +770,6 @@
                                 <div class="invalid-feedback">Please provide the guardian's occupation.</div>
                             </div>
                         </div>
-
                         <!-- Column 2 -->
                         <div class="col-md-3">
                             <div class="form-group">
@@ -630,21 +783,34 @@
                                 <div class="invalid-feedback">Please provide a valid age for the guardian (18-100).</div>
                             </div>
                         </div>
-
                         <!-- Column 3 -->
                         <div class="col-md-3">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.LocalGuardianEmail, "Guardian's Email", new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.LocalGuardianEmail, new { @class = "form-control", type = "email", required = "required", @Value = Model?.LocalGuardianEmail ?? "", pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" })
-                                <div class="invalid-feedback">Please provide a valid email address for the guardian.</div>
+                                @Html.TextBoxFor(m => m.LocalGuardianEmail, new { @class = "form-control", type = "email", required = "required", @Value = Model?.LocalGuardianEmail ?? "", pattern = @"^[a-zA-Z0-9._%+-]+@gmail\.com$" })
+                                <div class="invalid-feedback">Please provide a valid Gmail address for the guardian (e.g., username@gmail.com).</div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.LocalGuardianResidentialAddress, "Guardian's Residential Address", new { @class = "form-label" })
-                                @Html.TextAreaFor(m => m.LocalGuardianResidentialAddress, new { @class = "form-control", rows = "4", required = "required", @Value = Model?.LocalGuardianResidentialAddress ?? "" })
+                                @Html.TextBoxFor(m => m.LocalGuardianResidentialAddress, new { @class = "form-control", required = "required", @Value = Model?.LocalGuardianResidentialAddress ?? "" })
                                 <div class="invalid-feedback">Please provide the guardian's residential address.</div>
                             </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianAddress_State, "State", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.LocalGuardianAddress_State, new { @class = "form-control", required = "required", @Value = Model?.LocalGuardianAddress_State ?? "" })
+                                <div class="invalid-feedback">Please provide the state.</div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianAddress_City, "City", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.LocalGuardianAddress_City, new { @class = "form-control", required = "required", @Value = Model?.LocalGuardianAddress_City ?? "" })
+                                <div class="invalid-feedback">Please provide the city.</div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LocalGuardianAddress_Pincode, "Pincode", new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.LocalGuardianAddress_Pincode, new { @class = "form-control", required = "required", @Value = Model?.LocalGuardianAddress_Pincode ?? "", pattern = @"^\d{6}$", title = "Pincode must be exactly 6 digits." })
+                                <div class="invalid-feedback">Please provide a valid 6-digit pincode.</div>
+                            </div>
                         </div>
-
                         <!-- Column 4 -->
                         <div class="col-md-3">
                             <div class="form-group">
@@ -687,41 +853,170 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Prevent default HTML5 validation on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('personalDetailsForm');
+            form.querySelectorAll('.form-control, .form-select').forEach(input => {
+                input.classList.remove('is-invalid');
+                const feedback = input.nextElementSibling;
+                if (feedback && feedback.classList.contains('invalid-feedback')) {
+                    feedback.style.display = 'none';
+                }
+            });
+            form.querySelectorAll('.checkbox-group').forEach(group => {
+                group.classList.remove('is-invalid');
+                const feedback = group.nextElementSibling;
+                if (feedback && feedback.classList.contains('invalid-feedback')) {
+                    feedback.style.display = 'none';
+                }
+            });
+        });
+
+        // Real-time validation for fields with specific patterns or numeric restrictions
+        function validateField(input) {
+            const feedback = input.nextElementSibling;
+            const isFeedback = feedback && feedback.classList.contains('invalid-feedback');
+            let isValid = true;
+
+            // Skip validation if the field is empty (will be checked on submission)
+            if (!input.value && !input.hasAttribute('required')) {
+                input.classList.remove('is-invalid');
+                if (isFeedback) feedback.style.display = 'none';
+                return true;
+            }
+
+            // Check pattern for fields with regex (e.g., email, mobile, pincode, Aadhar)
+            if (input.pattern && input.value) {
+                const regex = new RegExp(`^${input.pattern}$`);
+                isValid = regex.test(input.value);
+            }
+
+            // Additional checks for numeric fields
+            if (input.type === 'number') {
+                const min = input.min ? parseFloat(input.min) : null;
+                const max = input.max ? parseFloat(input.max) : null;
+                const value = parseFloat(input.value);
+                if (input.value && (isNaN(value) || (min !== null && value < min) || (max !== null && value > max))) {
+                    isValid = false;
+                }
+            }
+
+            // Update UI based on validity
+            if (!isValid && input.value) {
+                input.classList.add('is-invalid');
+                if (isFeedback) feedback.style.display = 'block';
+            } else {
+                input.classList.remove('is-invalid');
+                if (isFeedback) feedback.style.display = 'none';
+            }
+            return isValid;
+        }
+
+        // Apply real-time validation to specific fields
+        const fieldsToValidateRealTime = [
+            // Numeric fields
+            'StudentContactNo', 'stu_whatsappnum', 'Father_Mobile_No', 'Mother_Mobile_No', 'LocalGuardianContactNo',
+            'ResidentialAddress_Pincode', 'StudentAddress_Communication_Pincode', 'LocalGuardianAddress_Pincode',
+            'AadharNumber', 'AdmissionYear', 'Mother_Age', 'LocalGuardianAge',
+            // Email fields
+            'StudentEmail', 'FathersEmail', 'MothersEmail', 'LocalGuardianEmail'
+        ];
+
+        fieldsToValidateRealTime.forEach(id => {
+            const field = document.getElementById(id);
+            if (field) {
+                field.addEventListener('input', function () {
+                    // Enforce numeric input for mobile, pincode, Aadhar
+                    if (['StudentContactNo', 'stu_whatsappnum', 'Father_Mobile_No', 'Mother_Mobile_No', 'LocalGuardianContactNo', 'ResidentialAddress_Pincode', 'StudentAddress_Communication_Pincode', 'LocalGuardianAddress_Pincode', 'AadharNumber'].includes(id)) {
+                        this.value = this.value.replace(/[^0-9]/g, '');
+                        if (this.pattern && this.value.length > this.pattern.length - 2) { // Account for ^ and $
+                            this.value = this.value.slice(0, this.pattern.length - 2);
+                        }
+                    }
+                    validateField(this);
+                });
+            }
+        });
+
+        // Real-time validation for other required fields (only when they have a value)
+        document.querySelectorAll('.form-control[required], .form-select[required]').forEach(input => {
+            if (!fieldsToValidateRealTime.includes(input.id)) {
+                input.addEventListener('input', function () {
+                    validateField(this);
+                });
+            }
+        });
+
+        // Same Address Checkbox Logic
+        const sameAddressCheckbox = document.getElementById('sameAddressCheckbox');
+        const residentialFields = {
+            address: document.getElementById('PresentResidentialAddress'),
+            state: document.getElementById('ResidentialAddress_State'),
+            city: document.getElementById('ResidentialAddress_City'),
+            pincode: document.getElementById('ResidentialAddress_Pincode')
+        };
+        const communicationFields = {
+            address: document.getElementById('StudentAddress_Communication'),
+            state: document.getElementById('StudentAddress_Communication_State'),
+            city: document.getElementById('StudentAddress_Communication_City'),
+            pincode: document.getElementById('StudentAddress_Communication_Pincode')
+        };
+
+        function updateCommunicationFields() {
+            if (sameAddressCheckbox.checked) {
+                communicationFields.address.value = residentialFields.address.value;
+                communicationFields.state.value = residentialFields.state.value;
+                communicationFields.city.value = residentialFields.city.value;
+                communicationFields.pincode.value = residentialFields.pincode.value;
+                Object.values(communicationFields).forEach(field => {
+                    field.setAttribute('readonly', 'readonly');
+                    field.classList.add('bg-light');
+                    field.classList.remove('is-invalid');
+                    const feedback = field.nextElementSibling;
+                    if (feedback && feedback.classList.contains('invalid-feedback')) {
+                        feedback.style.display = 'none';
+                    }
+                });
+            } else {
+                Object.values(communicationFields).forEach(field => {
+                    field.removeAttribute('readonly');
+                    field.classList.remove('bg-light');
+                    validateField(field); // Re-validate when fields become editable
+                });
+            }
+        }
+
+        sameAddressCheckbox.addEventListener('change', updateCommunicationFields);
+
+        // Update communication fields on residential field change when checkbox is checked
+        Object.values(residentialFields).forEach(field => {
+            field.addEventListener('input', () => {
+                if (sameAddressCheckbox.checked) {
+                    updateCommunicationFields();
+                }
+            });
+        });
+
         // Add new health history input
         document.getElementById('addHealthHistory').addEventListener('click', function () {
             const container = document.getElementById('healthHistoryContainer');
             const newItem = document.createElement('div');
             newItem.className = 'health-history-item';
             newItem.innerHTML = `
-                    <input type="text" name="Past_Health_History[]" class="form-control health-history-input" required />
-                    <button type="button" class="btn btn-danger btn-sm remove-health">Remove</button>
-                `;
+            <input type="text" name="Past_Health_History[]" class="form-control health-history-input" />
+            <button type="button" class="btn btn-danger btn-sm remove-health">Remove</button>
+        `;
             container.appendChild(newItem);
-            validateHealthHistory();
         });
 
         // Remove health history input
         document.addEventListener('click', function (e) {
             if (e.target.classList.contains('remove-health')) {
                 e.target.parentElement.remove();
-                validateHealthHistory();
             }
         });
-
-        // Validate health history inputs
-        function validateHealthHistory() {
-            const container = document.getElementById('healthHistoryContainer');
-            const error = document.getElementById('healthHistoryError');
-            const inputs = container.querySelectorAll('.health-history-input');
-            if (inputs.length === 0) {
-                error.style.display = 'block';
-                container.classList.add('is-invalid');
-            } else {
-                error.style.display = 'none';
-                container.classList.remove('is-invalid');
-            }
-        }
 
         // Validate checkbox groups
         function validateCheckboxes(groupId, checkboxClass, errorId) {
@@ -730,11 +1025,13 @@
             const error = document.getElementById(errorId);
             const isChecked = Array.from(checkboxes).some(cb => cb.checked);
             if (!isChecked) {
-                error.style.display = 'block';
                 group.classList.add('is-invalid');
+                error.style.display = 'block';
+                return false;
             } else {
-                error.style.display = 'none';
                 group.classList.remove('is-invalid');
+                error.style.display = 'none';
+                return true;
             }
         }
 
@@ -755,34 +1052,58 @@
                 if (inputField) {
                     inputField.setAttribute('value', selectedValues.join(','));
                 }
-
-                // Validate on change
-                if (name === 'AllergyNames') {
-                    validateCheckboxes('allergyNamesGroup', 'allergy-checkbox', 'allergyNamesError');
-                } else if (name === 'Work_Experience') {
-                    validateCheckboxes('workExperienceGroup', 'work-experience-checkbox', 'workExperienceError');
-                } else if (name === 'Parents_Income_Category') {
-                    validateCheckboxes('parentsIncomeGroup', 'income-checkbox', 'parentsIncomeError');
-                }
             });
         });
 
-        // Form submission validation
+        // Form validation on "Save Personal Details" button click
+        document.querySelector('button[data-bs-target="#confirmSubmitModal"]').addEventListener('click', function () {
+            const form = document.getElementById('personalDetailsForm');
+            let isValid = true;
+
+            // Validate all required fields for emptiness
+            form.querySelectorAll('.form-control[required], .form-select[required]').forEach(input => {
+                if (!input.value) {
+                    input.classList.add('is-invalid');
+                    const feedback = input.nextElementSibling;
+                    if (feedback && feedback.classList.contains('invalid-feedback')) {
+                        feedback.style.display = 'block';
+                    }
+                    isValid = false;
+                } else {
+                    // Re-validate pattern or numeric constraints
+                    if (!validateField(input)) {
+                        isValid = false;
+                    }
+                }
+            });
+
+            // Validate Work Experience and Parents Income (required)
+            if (!validateCheckboxes('workExperienceGroup', 'work-experience-checkbox', 'workExperienceError')) {
+                isValid = false;
+            }
+            if (!validateCheckboxes('parentsIncomeGroup', 'income-checkbox', 'parentsIncomeError')) {
+                isValid = false;
+            }
+
+            // Skip health history and allergy validation (optional)
+            const healthContainer = document.getElementById('healthHistoryContainer');
+            const allergyGroup = document.getElementById('allergyNamesGroup');
+            healthContainer.classList.remove('is-invalid');
+            document.getElementById('healthHistoryError').style.display = 'none';
+            allergyGroup.classList.remove('is-invalid');
+            document.getElementById('allergyNamesError').style.display = 'none';
+
+            // If form is valid, show the confirmation modal
+            if (isValid) {
+                const modal = new bootstrap.Modal(document.getElementById('confirmSubmitModal'));
+                modal.show();
+            }
+        });
+
+        // Form submission on "Confirm" button click
         document.getElementById('confirmSubmit').addEventListener('click', function () {
             const form = document.getElementById('personalDetailsForm');
-            validateHealthHistory();
-            validateCheckboxes('allergyNamesGroup', 'allergy-checkbox', 'allergyNamesError');
-            validateCheckboxes('workExperienceGroup', 'work-experience-checkbox', 'workExperienceError');
-            validateCheckboxes('parentsIncomeGroup', 'income-checkbox', 'parentsIncomeError');
-
-            if (form.checkValidity() && !document.querySelector('#healthHistoryError').style.display &&
-                !document.querySelector('#allergyNamesError').style.display &&
-                !document.querySelector('#workExperienceError').style.display &&
-                !document.querySelector('#parentsIncomeError').style.display) {
-                form.submit();
-            } else {
-                form.reportValidity();
-            }
+            form.submit();
         });
 
         // Age calculation script
@@ -818,14 +1139,12 @@
             dobInput.addEventListener('change', function () {
                 if (dobInput.value) {
                     ageInput.value = calculateAge(dobInput.value);
+                    validateField(dobInput); // Validate DOB immediately
                 }
             });
 
-            // Initial validation for checkboxes
-            validateCheckboxes('allergyNamesGroup', 'allergy-checkbox', 'allergyNamesError');
-            validateCheckboxes('workExperienceGroup', 'work-experience-checkbox', 'workExperienceError');
-            validateCheckboxes('parentsIncomeGroup', 'income-checkbox', 'parentsIncomeError');
-            validateHealthHistory();
+            // Initialize same address checkbox
+            updateCommunicationFields();
         });
     </script>
 </body>

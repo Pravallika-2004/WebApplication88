@@ -12,9 +12,9 @@ using WebApplication8.Models;
 using System.IO.Compression;
 
 
-using Ionic.Zip; // or use System.IO.Compression
+using System.IO.Compression;
 
-using iTextSharp.text.pdf;
+//using iTextSharp.text.pdf;
 using System.Net;
 
 namespace WebApplication8.Controllers

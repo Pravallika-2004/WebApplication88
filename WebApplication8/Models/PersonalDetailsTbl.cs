@@ -65,5 +65,14 @@ namespace WebApplication8.Models
         public string University { get; set; }
         public string History_of_drug_allergy { get; set; }
         public string Student_Name__as_per_10th_grade_sheet_ { get; set; }
+        public string ResidentialAddress_State { get; set; }
+        public string ResidentialAddress_City { get; set; }
+        public string ResidentialAddress_Pincode { get; set; }
+        public string StudentAddress_Communication_State { get; set; }
+        public string StudentAddress_Communication_City { get; set; }
+        public string StudentAddress_Communication_Pincode { get; set; }
+        public string LocalGuardianAddress_State { get; set; }
+        public string LocalGuardianAddress_City { get; set; }
+        public string LocalGuardianAddress_Pincode { get; set; }
     }
 }

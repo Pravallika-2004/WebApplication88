@@ -11,7 +11,7 @@ namespace WebApplication8.Controllers
     public class LoginController : Controller
     {
 
-        private readonly FEEEntities db = new FEEEntities();
+        private readonly FEEEntities1 db = new FEEEntities1();
         // GET: Login
         public ActionResult Loginpage()
         {

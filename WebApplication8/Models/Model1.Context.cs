@@ -31,7 +31,6 @@ namespace WebApplication8.Models
         public virtual DbSet<HostelFeesTbl> HostelFeesTbls { get; set; }
         public virtual DbSet<MessFeesTbl> MessFeesTbls { get; set; }
         public virtual DbSet<PenaltyDetailsTbl> PenaltyDetailsTbls { get; set; }
-        public virtual DbSet<PersonalDetailsTbl> PersonalDetailsTbls { get; set; }
         public virtual DbSet<ProgramTbl> ProgramTbls { get; set; }
         public virtual DbSet<ReRegistrationDetailsTbl> ReRegistrationDetailsTbls { get; set; }
         public virtual DbSet<SemesterFeesTbl> SemesterFeesTbls { get; set; }
@@ -42,5 +41,6 @@ namespace WebApplication8.Models
         public virtual DbSet<TblFeeDetail> TblFeeDetails { get; set; }
         public virtual DbSet<TblLogin> TblLogins { get; set; }
         public virtual DbSet<TransportTbl> TransportTbls { get; set; }
+        public virtual DbSet<PersonalDetailsTbl> PersonalDetailsTbls { get; set; }
     }
 }
